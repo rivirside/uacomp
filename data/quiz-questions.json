@@ -1,0 +1,1946 @@
+[
+  {
+    "id": "pre-cardiovascular-01",
+    "question": "Which heart sound corresponds to closure of the semilunar valves?",
+    "choices": [
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+    ],
+    "answerIndex": 1,
+    "explanation": "S2 is produced by closure of the aortic and pulmonic valves at the end of systole.",
+    "topics": ["cardiovascular", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["cardiovascular"],
+      "disciplines": ["physiology"]
+    }
+  },
+  {
+    "id": "pre-cardiovascular-02",
+    "question": "According to the Frank–Starling relationship, increasing preload in a healthy heart primarily increases which of the following?",
+    "choices": [
+      "End-systolic volume",
+      "Stroke volume",
+      "Systemic vascular resistance",
+      "Heart rate"
+    ],
+    "answerIndex": 1,
+    "explanation": "Greater preload stretches sarcomeres and increases stroke volume until the optimal length-tension relationship is reached.",
+    "topics": ["cardiovascular", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["cardiovascular"],
+      "disciplines": ["physiology"]
+    }
+  },
+  {
+    "id": "pre-cardiovascular-03",
+    "question": "Class III antiarrhythmic medications (e.g., amiodarone) primarily prolong which phase of the ventricular action potential?",
+    "choices": [
+      "Phase 0 – rapid depolarization",
+      "Phase 1 – initial repolarization",
+      "Phase 2 – plateau",
+      "Phase 3 – repolarization"
+    ],
+    "answerIndex": 3,
+    "explanation": "Class III drugs block potassium efflux channels, prolonging repolarization (phase 3) and the refractory period.",
+    "topics": ["cardiovascular", "preclinical", "pharmacology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["cardiovascular"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "clin-cardiovascular-01",
+    "question": "A 64-year-old with hypertension develops crushing chest pain radiating to the jaw. ECG shows ST elevations in V1-V4. Which coronary artery is most likely occluded?",
+    "choices": [
+      "Right coronary artery",
+      "Left circumflex artery",
+      "Left anterior descending artery",
+      "Posterior descending artery"
+    ],
+    "answerIndex": 2,
+    "explanation": "ST elevation in the anterior leads localizes to the LAD supplying the anterior wall.",
+    "topics": ["cardiovascular", "clinical"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["cardiovascular"],
+      "disciplines": ["pathology"]
+    }
+  },
+  {
+    "id": "clin-cardiovascular-02",
+    "question": "A patient with reduced ejection fraction heart failure remains symptomatic on guideline-directed therapy. Which medication reduces mortality by neprilysin inhibition when combined with valsartan?",
+    "choices": [
+      "Ivabradine",
+      "Sacubitril",
+      "Digoxin",
+      "Verapamil"
+    ],
+    "answerIndex": 1,
+    "explanation": "Sacubitril/valsartan enhances natriuretic peptides and improves outcomes in HFrEF.",
+    "topics": ["cardiovascular", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["cardiovascular"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "clin-cardiovascular-03",
+    "question": "A 72-year-old with atrial fibrillation presents for rate control. Which agent slows AV nodal conduction by increasing vagal tone?",
+    "choices": [
+      "Amiodarone",
+      "Metoprolol",
+      "Digoxin",
+      "Flecainide"
+    ],
+    "answerIndex": 2,
+    "explanation": "Digoxin increases parasympathetic tone to the AV node and is sometimes used for rate control in AF.",
+    "topics": ["cardiovascular", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["cardiovascular"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "pre-respiratory-01",
+    "question": "Which lung volume cannot be measured directly by spirometry?",
+    "choices": [
+      "Tidal volume",
+      "Inspiratory reserve volume",
+      "Expiratory reserve volume",
+      "Residual volume"
+    ],
+    "answerIndex": 3,
+    "explanation": "Residual volume and capacities containing it require indirect measurement (e.g., helium dilution).",
+    "topics": ["respiratory", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["respiratory"],
+      "disciplines": ["physiology"]
+    }
+  },
+  {
+    "id": "pre-respiratory-02",
+    "question": "Which shift in the oxygen-hemoglobin dissociation curve favors oxygen unloading at the tissues?",
+    "choices": [
+      "Left shift caused by alkalosis",
+      "Right shift caused by increased 2,3-BPG",
+      "Left shift caused by fetal hemoglobin",
+      "Left shift caused by carbon monoxide"
+    ],
+    "answerIndex": 1,
+    "explanation": "A right shift (↑2,3-BPG, ↑temperature, ↑CO2, ↑H+) lowers oxygen affinity and promotes tissue unloading.",
+    "topics": ["respiratory", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["respiratory"],
+      "disciplines": ["physiology"]
+    }
+  },
+  {
+    "id": "pre-respiratory-03",
+    "question": "Type II pneumocytes are primarily responsible for which function?",
+    "choices": [
+      "Gas exchange",
+      "Mucus secretion",
+      "Surfactant production",
+      "Ciliary clearance"
+    ],
+    "answerIndex": 2,
+    "explanation": "Type II pneumocytes produce surfactant, regenerate the alveolar epithelium, and proliferate after injury.",
+    "topics": ["respiratory", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["respiratory"],
+      "disciplines": ["histology"]
+    }
+  },
+  {
+    "id": "clin-respiratory-01",
+    "question": "A 58-year-old smoker presents with chronic cough and sputum production. Spirometry shows FEV1/FVC of 55%. Which pharmacologic class improves mortality in select COPD patients with eosinophilia?",
+    "choices": [
+      "Long-acting muscarinic antagonists",
+      "Inhaled corticosteroids",
+      "Short-acting beta agonists",
+      "Oral theophylline"
+    ],
+    "answerIndex": 1,
+    "explanation": "Inhaled corticosteroids reduce exacerbations in COPD patients with frequent flare-ups and eosinophilic phenotype.",
+    "topics": ["respiratory", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["respiratory"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "clin-respiratory-02",
+    "question": "A trauma patient develops acute respiratory distress syndrome (ARDS). Which ventilator strategy improves survival?",
+    "choices": [
+      "High tidal volumes and low PEEP",
+      "Low tidal volumes with higher PEEP",
+      "Daily permissive apnea",
+      "Hyperventilation to PaCO2 < 25 mmHg"
+    ],
+    "answerIndex": 1,
+    "explanation": "Lung-protective ventilation uses low tidal volumes (4–6 mL/kg) with adequate PEEP to prevent atelectrauma.",
+    "topics": ["respiratory", "clinical", "critical-care"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["respiratory"],
+      "disciplines": ["critical-care"]
+    }
+  },
+  {
+    "id": "clin-respiratory-03",
+    "question": "Which diagnostic test confirms pulmonary embolism in a hemodynamically stable patient with normal renal function?",
+    "choices": [
+      "Ventilation/perfusion scan",
+      "CT pulmonary angiography",
+      "Lower extremity ultrasound",
+      "D-dimer"
+    ],
+    "answerIndex": 1,
+    "explanation": "CT pulmonary angiography visualizes thrombus in the pulmonary arteries and is first-line when available.",
+    "topics": ["respiratory", "clinical", "diagnostics"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["respiratory"],
+      "disciplines": ["radiology"]
+    }
+  },
+  {
+    "id": "pre-renal-01",
+    "question": "Which nephron segment is primarily responsible for reabsorbing two-thirds of filtered sodium and water?",
+    "choices": [
+      "Proximal convoluted tubule",
+      "Thick ascending limb",
+      "Distal convoluted tubule",
+      "Collecting duct"
+    ],
+    "answerIndex": 0,
+    "explanation": "The proximal tubule reabsorbs the majority of filtered sodium, water, glucose, and amino acids.",
+    "topics": ["renal", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["renal"],
+      "disciplines": ["physiology"]
+    }
+  },
+  {
+    "id": "pre-renal-02",
+    "question": "Loop diuretics inhibit which transporter in the thick ascending limb?",
+    "choices": [
+      "Na+/Cl− cotransporter",
+      "Na+/K+/2Cl− cotransporter",
+      "Na+/glucose symporter",
+      "ENaC channel"
+    ],
+    "answerIndex": 1,
+    "explanation": "Furosemide and other loop diuretics block the Na+/K+/2Cl− transporter, abolishing the medullary gradient.",
+    "topics": ["renal", "preclinical", "pharmacology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["renal"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "pre-renal-03",
+    "question": "Which hormone increases water reabsorption by inserting aquaporin-2 channels into principal cells?",
+    "choices": [
+      "Aldosterone",
+      "Vasopressin",
+      "Parathyroid hormone",
+      "Atrial natriuretic peptide"
+    ],
+    "answerIndex": 1,
+    "explanation": "ADH binds V2 receptors on principal cells, increasing aquaporin-2 and concentrating urine.",
+    "topics": ["renal", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["renal"],
+      "disciplines": ["physiology"]
+    }
+  },
+  {
+    "id": "clin-renal-01",
+    "question": "A patient with acute kidney injury has muddy brown granular casts. Which etiology is most likely?",
+    "choices": [
+      "Acute interstitial nephritis",
+      "Prerenal azotemia",
+      "Acute tubular necrosis",
+      "Postrenal obstruction"
+    ],
+    "answerIndex": 2,
+    "explanation": "Mud-brown casts are characteristic of acute tubular necrosis from ischemia or nephrotoxins.",
+    "topics": ["renal", "clinical", "pathology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["renal"],
+      "disciplines": ["pathology"]
+    }
+  },
+  {
+    "id": "clin-renal-02",
+    "question": "Which antihypertensive class is contraindicated in bilateral renal artery stenosis due to risk of acute kidney injury?",
+    "choices": [
+      "Calcium channel blockers",
+      "ACE inhibitors",
+      "Beta blockers",
+      "Thiazide diuretics"
+    ],
+    "answerIndex": 1,
+    "explanation": "ACE inhibitors dilate the efferent arteriole, reducing GFR and can precipitate renal failure in bilateral RAS.",
+    "topics": ["renal", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["renal"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "clin-renal-03",
+    "question": "A 25-year-old presents with nephritic syndrome and linear IgG deposition on immunofluorescence. Which diagnosis fits best?",
+    "choices": [
+      "IgA nephropathy",
+      "Membranous nephropathy",
+      "Goodpasture syndrome",
+      "Minimal change disease"
+    ],
+    "answerIndex": 2,
+    "explanation": "Anti-GBM antibody disease (Goodpasture) shows linear IgG deposits and causes nephritic syndrome with pulmonary hemorrhage.",
+    "topics": ["renal", "clinical", "immunology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["renal"],
+      "disciplines": ["immunology"]
+    }
+  },
+  {
+    "id": "pre-gastrointestinal-01",
+    "question": "Parietal cells in the stomach secrete which substance essential for vitamin B12 absorption?",
+    "choices": [
+      "Pepsinogen",
+      "Intrinsic factor",
+      "Gastrin",
+      "Secretin"
+    ],
+    "answerIndex": 1,
+    "explanation": "Intrinsic factor bind vitamin B12, enabling absorption in the terminal ileum.",
+    "topics": ["gastrointestinal", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["gastrointestinal"],
+      "disciplines": ["physiology"]
+    }
+  },
+  {
+    "id": "pre-gastrointestinal-02",
+    "question": "Which GI hormone increases pancreatic bicarbonate secretion and decreases gastric acid secretion?",
+    "choices": [
+      "Gastrin",
+      "Cholecystokinin",
+      "Secretin",
+      "Motilin"
+    ],
+    "answerIndex": 2,
+    "explanation": "Secretin is released from S cells in the duodenum in response to acid and stimulates bicarbonate secretion.",
+    "topics": ["gastrointestinal", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["gastrointestinal"],
+      "disciplines": ["physiology"]
+    }
+  },
+  {
+    "id": "pre-gastrointestinal-03",
+    "question": "Celiac disease is associated with villous atrophy in which portion of the intestine?",
+    "choices": [
+      "Duodenum",
+      "Jejunum",
+      "Ileum",
+      "Colon"
+    ],
+    "answerIndex": 0,
+    "explanation": "Celiac disease primarily affects the proximal small intestine (duodenum) with blunted villi.",
+    "topics": ["gastrointestinal", "preclinical", "pathology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["gastrointestinal"],
+      "disciplines": ["pathology"]
+    }
+  },
+  {
+    "id": "clin-gastrointestinal-01",
+    "question": "A 45-year-old with chronic GERD develops Barrett esophagus. Which epithelium replaces the normal squamous mucosa?",
+    "choices": [
+      "Simple cuboidal",
+      "Stratified columnar",
+      "Non-keratinized stratified squamous",
+      "Intestinal-type columnar with goblet cells"
+    ],
+    "answerIndex": 3,
+    "explanation": "Barrett metaplasia shows intestinal-type columnar epithelium with goblet cells in the distal esophagus.",
+    "topics": ["gastrointestinal", "clinical", "pathology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["gastrointestinal"],
+      "disciplines": ["pathology"]
+    }
+  },
+  {
+    "id": "clin-gastrointestinal-02",
+    "question": "A patient with IBD develops toxic megacolon. Which imaging modality is best for diagnosis?",
+    "choices": [
+      "Abdominal ultrasound",
+      "Plain abdominal X-ray",
+      "CT enterography",
+      "MRCP"
+    ],
+    "answerIndex": 1,
+    "explanation": "A supine abdominal X-ray showing dilated colon (>6 cm) confirms toxic megacolon.",
+    "topics": ["gastrointestinal", "clinical", "diagnostics"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["gastrointestinal"],
+      "disciplines": ["radiology"]
+    }
+  },
+  {
+    "id": "clin-gastrointestinal-03",
+    "question": "First-line therapy for mild ulcerative colitis limited to the rectum is which medication?",
+    "choices": [
+      "Oral prednisone",
+      "Mesalamine suppositories",
+      "Infliximab",
+      "Azathioprine"
+    ],
+    "answerIndex": 1,
+    "explanation": "Topical 5-ASA preparations such as mesalamine suppositories are first-line for distal UC.",
+    "topics": ["gastrointestinal", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["gastrointestinal"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "pre-hepatobiliary-01",
+    "question": "Which enzyme catalyzes the rate-limiting step of bile acid synthesis from cholesterol?",
+    "choices": [
+      "Cholesterol 7α-hydroxylase",
+      "HMG-CoA reductase",
+      "Lecithin-cholesterol acyltransferase",
+      "Acetyl-CoA carboxylase"
+    ],
+    "answerIndex": 0,
+    "explanation": "Cholesterol 7α-hydroxylase converts cholesterol into bile acids and is inhibited by bile salts.",
+    "topics": ["hepatobiliary", "preclinical", "biochemistry"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["hepatobiliary"],
+      "disciplines": ["biochemistry"]
+    }
+  },
+  {
+    "id": "pre-hepatobiliary-02",
+    "question": "Gilbert syndrome is caused by decreased activity of which enzyme?",
+    "choices": [
+      "UDP-glucuronosyltransferase",
+      "Galactose-1-phosphate uridyltransferase",
+      "Alpha-1 antitrypsin",
+      "Carnitine palmitoyltransferase"
+    ],
+    "answerIndex": 0,
+    "explanation": "Gilbert syndrome involves reduced UDP-glucuronosyltransferase leading to mild unconjugated hyperbilirubinemia.",
+    "topics": ["hepatobiliary", "preclinical", "genetics"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["hepatobiliary"],
+      "disciplines": ["genetics"]
+    }
+  },
+  {
+    "id": "pre-hepatobiliary-03",
+    "question": "Which cell type stores vitamin A and contributes to hepatic fibrosis when activated?",
+    "choices": [
+      "Kupffer cell",
+      "Ito (stellate) cell",
+      "Cholangiocyte",
+      "Hepatocyte"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stellate (Ito) cells store vitamin A in quiescent state and produce collagen when activated.",
+    "topics": ["hepatobiliary", "preclinical", "histology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["hepatobiliary"],
+      "disciplines": ["histology"]
+    }
+  },
+  {
+    "id": "clin-hepatobiliary-01",
+    "question": "A patient with cirrhosis develops ascites. Which diuretic combination is preferred to maintain potassium balance?",
+    "choices": [
+      "Furosemide alone",
+      "Spironolactone plus furosemide",
+      "Hydrochlorothiazide alone",
+      "Acetazolamide"
+    ],
+    "answerIndex": 1,
+    "explanation": "Spironolactone targets hyperaldosteronism in cirrhosis and is paired with loop diuretics to maintain normokalemia.",
+    "topics": ["hepatobiliary", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["hepatobiliary"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "clin-hepatobiliary-02",
+    "question": "Which serologic profile suggests immunity to hepatitis B from vaccination?",
+    "choices": [
+      "HBsAg+, anti-HBs−, anti-HBc+",
+      "HBsAg−, anti-HBs+, anti-HBc−",
+      "HBsAg+, anti-HBs+, anti-HBc IgM+",
+      "HBsAg−, anti-HBs+, anti-HBc IgG+"
+    ],
+    "answerIndex": 1,
+    "explanation": "Vaccination yields anti-HBs antibodies without core antibodies or surface antigen.",
+    "topics": ["hepatobiliary", "clinical", "immunology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["hepatobiliary"],
+      "disciplines": ["immunology"]
+    }
+  },
+  {
+    "id": "clin-hepatobiliary-03",
+    "question": "A patient with primary sclerosing cholangitis is at greatest risk for developing which malignancy?",
+    "choices": [
+      "Hepatocellular carcinoma",
+      "Cholangiocarcinoma",
+      "Pancreatic adenocarcinoma",
+      "Hepatic angiosarcoma"
+    ],
+    "answerIndex": 1,
+    "explanation": "PSC markedly increases risk of cholangiocarcinoma due to chronic biliary inflammation.",
+    "topics": ["hepatobiliary", "clinical", "pathology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["hepatobiliary"],
+      "disciplines": ["pathology"]
+    }
+  },
+  {
+    "id": "pre-endocrine-01",
+    "question": "Which hormone is derived from proopiomelanocortin (POMC)?",
+    "choices": [
+      "Insulin",
+      "ACTH",
+      "Calcitonin",
+      "Parathyroid hormone"
+    ],
+    "answerIndex": 1,
+    "explanation": "POMC is cleaved into ACTH, MSH, and beta-endorphin in the anterior pituitary.",
+    "topics": ["endocrine", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["endocrine"],
+      "disciplines": ["biochemistry"]
+    }
+  },
+  {
+    "id": "pre-endocrine-02",
+    "question": "Which transporter moves glucose into skeletal muscle under insulin stimulation?",
+    "choices": [
+      "GLUT1",
+      "GLUT2",
+      "GLUT4",
+      "SGLT1"
+    ],
+    "answerIndex": 2,
+    "explanation": "GLUT4 translocates to the membrane in response to insulin in muscle and adipose tissue.",
+    "topics": ["endocrine", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["endocrine"],
+      "disciplines": ["physiology"]
+    }
+  },
+  {
+    "id": "pre-endocrine-03",
+    "question": "Which enzyme converts T4 to the more active T3 in peripheral tissues?",
+    "choices": [
+      "Thyroid peroxidase",
+      "5′-deiodinase",
+      "Thyroglobulin",
+      "Dopamine beta-hydroxylase"
+    ],
+    "answerIndex": 1,
+    "explanation": "5′-deiodinase converts thyroxine (T4) into active triiodothyronine (T3).",
+    "topics": ["endocrine", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["endocrine"],
+      "disciplines": ["biochemistry"]
+    }
+  },
+  {
+    "id": "clin-endocrine-01",
+    "question": "A patient with type 1 diabetes uses insulin lispro. What is its onset of action?",
+    "choices": [
+      "5 minutes",
+      "15 minutes",
+      "1 hour",
+      "4 hours"
+    ],
+    "answerIndex": 1,
+    "explanation": "Rapid-acting insulins (lispro, aspart, glulisine) begin working within ~15 minutes.",
+    "topics": ["endocrine", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["endocrine"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "clin-endocrine-02",
+    "question": "Which test helps distinguish primary from secondary adrenal insufficiency by assessing cortisol response?",
+    "choices": [
+      "Low-dose dexamethasone suppression test",
+      "Cosyntropin stimulation test",
+      "Oral glucose tolerance test",
+      "Water deprivation test"
+    ],
+    "answerIndex": 1,
+    "explanation": "Cosyntropin (ACTH analog) should increase cortisol in secondary causes but not in primary adrenal failure.",
+    "topics": ["endocrine", "clinical", "diagnostics"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["endocrine"],
+      "disciplines": ["endocrinology"]
+    }
+  },
+  {
+    "id": "clin-endocrine-03",
+    "question": "A patient with Graves disease is treated with methimazole. Which adverse effect requires immediate drug discontinuation?",
+    "choices": [
+      "Weight gain",
+      "Mild rash",
+      "Agranulocytosis",
+      "Peripheral edema"
+    ],
+    "answerIndex": 2,
+    "explanation": "Thionamides rarely cause agranulocytosis; new fever or sore throat warrants discontinuation and CBC.",
+    "topics": ["endocrine", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["endocrine"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "pre-reproductive-01",
+    "question": "Which hormone surge triggers ovulation in the menstrual cycle?",
+    "choices": [
+      "FSH",
+      "LH",
+      "Progesterone",
+      "Estradiol"
+    ],
+    "answerIndex": 1,
+    "explanation": "Rising estradiol from the dominant follicle triggers the midcycle LH surge leading to ovulation.",
+    "topics": ["reproductive", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["reproductive"],
+      "disciplines": ["physiology"]
+    }
+  },
+  {
+    "id": "pre-reproductive-02",
+    "question": "Which embryologic structure gives rise to the vas deferens?",
+    "choices": [
+      "Paramesonephric duct",
+      "Mesonephric duct",
+      "Genital tubercle",
+      "Urogenital sinus"
+    ],
+    "answerIndex": 1,
+    "explanation": "The mesonephric (Wolffian) duct develops into male internal structures including epididymis and vas deferens.",
+    "topics": ["reproductive", "preclinical", "embryology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["reproductive"],
+      "disciplines": ["embryology"]
+    }
+  },
+  {
+    "id": "pre-reproductive-03",
+    "question": "Which ovarian phase is relatively constant in duration across menstrual cycles?",
+    "choices": [
+      "Follicular phase",
+      "Luteal phase",
+      "Proliferative phase",
+      "Menstrual phase"
+    ],
+    "answerIndex": 1,
+    "explanation": "The luteal phase consistently lasts about 14 days after ovulation, whereas follicular length varies.",
+    "topics": ["reproductive", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["reproductive"],
+      "disciplines": ["physiology"]
+    }
+  },
+  {
+    "id": "clin-reproductive-01",
+    "question": "A pregnant patient at 28 weeks develops new hypertension and proteinuria. Which diagnosis is most likely?",
+    "choices": [
+      "Chronic hypertension",
+      "Gestational hypertension",
+      "Preeclampsia",
+      "HELLP syndrome"
+    ],
+    "answerIndex": 2,
+    "explanation": "Preeclampsia is hypertension after 20 weeks with proteinuria or end-organ dysfunction.",
+    "topics": ["reproductive", "clinical", "obstetrics"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["reproductive"],
+      "disciplines": ["obstetrics"]
+    }
+  },
+  {
+    "id": "clin-reproductive-02",
+    "question": "Which contraceptive method is contraindicated in patients with a history of estrogen-sensitive breast cancer?",
+    "choices": [
+      "Copper IUD",
+      "Progestin-only pill",
+      "Combined oral contraceptive pill",
+      "Levonorgestrel IUD"
+    ],
+    "answerIndex": 2,
+    "explanation": "Estrogen-containing contraceptives are contraindicated in estrogen-sensitive malignancy.",
+    "topics": ["reproductive", "clinical", "gynecology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["reproductive"],
+      "disciplines": ["gynecology"]
+    }
+  },
+  {
+    "id": "clin-reproductive-03",
+    "question": "A patient with polycystic ovarian syndrome is trying to conceive. Which medication induces ovulation by modulating estrogen receptors?",
+    "choices": [
+      "Metformin",
+      "Clomiphene citrate",
+      "Spironolactone",
+      "Leuprolide"
+    ],
+    "answerIndex": 1,
+    "explanation": "Clomiphene antagonizes estrogen receptors in the hypothalamus, increasing FSH/LH to trigger ovulation.",
+    "topics": ["reproductive", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["reproductive"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "pre-neurology-01",
+    "question": "Which neurotransmitter is synthesized in the locus coeruleus?",
+    "choices": [
+      "Serotonin",
+      "GABA",
+      "Norepinephrine",
+      "Dopamine"
+    ],
+    "answerIndex": 2,
+    "explanation": "The locus coeruleus in the pons is the primary source of norepinephrine in the CNS.",
+    "topics": ["neurology", "preclinical", "neuroanatomy"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["neurology"],
+      "disciplines": ["neuroanatomy"]
+    }
+  },
+  {
+    "id": "pre-neurology-02",
+    "question": "Which ion channel is targeted by local anesthetics to block nerve conduction?",
+    "choices": [
+      "Voltage-gated potassium channel",
+      "Voltage-gated sodium channel",
+      "Ligand-gated chloride channel",
+      "Calcium-activated potassium channel"
+    ],
+    "answerIndex": 1,
+    "explanation": "Local anesthetics prevent depolarization by blocking voltage-gated sodium channels from the inside.",
+    "topics": ["neurology", "preclinical", "pharmacology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["neurology"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "pre-neurology-03",
+    "question": "Loss of dopamine-producing neurons in which brain region causes Parkinson disease?",
+    "choices": [
+      "Caudate nucleus",
+      "Substantia nigra pars compacta",
+      "Subthalamic nucleus",
+      "Putamen"
+    ],
+    "answerIndex": 1,
+    "explanation": "Degeneration of dopaminergic neurons in the substantia nigra pars compacta underlies Parkinson disease.",
+    "topics": ["neurology", "preclinical", "pathology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["neurology"],
+      "disciplines": ["pathology"]
+    }
+  },
+  {
+    "id": "clin-neurology-01",
+    "question": "A 45-year-old presents with unilateral facial paralysis sparing the forehead. Where is the lesion?",
+    "choices": [
+      "Ipsilateral facial nerve",
+      "Contralateral motor cortex",
+      "Ipsilateral trigeminal nerve",
+      "Contralateral cerebellum"
+    ],
+    "answerIndex": 1,
+    "explanation": "Forehead sparing indicates an upper motor neuron lesion (contralateral corticobulbar fibers).",
+    "topics": ["neurology", "clinical"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["neurology"],
+      "disciplines": ["neurology"]
+    }
+  },
+  {
+    "id": "clin-neurology-02",
+    "question": "First-line therapy for acute ischemic stroke within 4.5 hours of onset is:",
+    "choices": [
+      "Aspirin",
+      "IV alteplase",
+      "Heparin infusion",
+      "Mechanical thrombectomy only"
+    ],
+    "answerIndex": 1,
+    "explanation": "Eligible patients within 4.5 hours receive IV tPA (alteplase) to dissolve thrombus.",
+    "topics": ["neurology", "clinical", "emergency-medicine"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["neurology"],
+      "disciplines": ["emergency-medicine"]
+    }
+  },
+  {
+    "id": "clin-neurology-03",
+    "question": "A patient with trigeminal neuralgia is treated with which first-line medication?",
+    "choices": [
+      "Carbamazepine",
+      "Gabapentin",
+      "Lamotrigine",
+      "Topiramate"
+    ],
+    "answerIndex": 0,
+    "explanation": "Carbamazepine is first-line for trigeminal neuralgia due to its sodium channel blocking effects.",
+    "topics": ["neurology", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["neurology"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "pre-musculoskeletal-01",
+    "question": "Which collagen type is most abundant in bone, tendons, and ligaments?",
+    "choices": [
+      "Type I",
+      "Type II",
+      "Type III",
+      "Type IV"
+    ],
+    "answerIndex": 0,
+    "explanation": "Type I collagen is strong and found in bone, skin, and tendons.",
+    "topics": ["musculoskeletal", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["musculoskeletal"],
+      "disciplines": ["biochemistry"]
+    }
+  },
+  {
+    "id": "pre-musculoskeletal-02",
+    "question": "Osteoclasts are derived from which cell lineage?",
+    "choices": [
+      "Mesenchymal stem cells",
+      "Osteoblasts",
+      "Monocyte/macrophage lineage",
+      "Chondrocytes"
+    ],
+    "answerIndex": 2,
+    "explanation": "Osteoclasts are multinucleated cells derived from monocyte precursors.",
+    "topics": ["musculoskeletal", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["musculoskeletal"],
+      "disciplines": ["histology"]
+    }
+  },
+  {
+    "id": "pre-musculoskeletal-03",
+    "question": "Which enzyme deficiency causes Achondroplasia?",
+    "choices": [
+      "FGFR3 gain-of-function mutation",
+      "Collagen type I mutation",
+      "Vitamin D hydroxylase deficiency",
+      "Carbonic anhydrase deficiency"
+    ],
+    "answerIndex": 0,
+    "explanation": "Achondroplasia results from activating mutations in FGFR3, inhibiting chondrocyte proliferation.",
+    "topics": ["musculoskeletal", "preclinical", "genetics"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["musculoskeletal"],
+      "disciplines": ["genetics"]
+    }
+  },
+  {
+    "id": "clin-musculoskeletal-01",
+    "question": "A patient with gout has frequent flares despite maxed allopurinol. Which uricosuric can be added to increase renal uric acid excretion?",
+    "choices": [
+      "Colchicine",
+      "Probenecid",
+      "Febuxostat",
+      "Indomethacin"
+    ],
+    "answerIndex": 1,
+    "explanation": "Probenecid inhibits URAT1 in the proximal tubule, enhancing uric acid excretion.",
+    "topics": ["musculoskeletal", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["musculoskeletal"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "clin-musculoskeletal-02",
+    "question": "A 60-year-old woman presents with morning stiffness improving with activity and symmetric MCP joint swelling. Which autoantibody is most specific?",
+    "choices": [
+      "Anti-dsDNA",
+      "Anti-CCP",
+      "ANA",
+      "Anti-centromere"
+    ],
+    "answerIndex": 1,
+    "explanation": "Anti-cyclic citrullinated peptide antibodies are highly specific for rheumatoid arthritis.",
+    "topics": ["musculoskeletal", "clinical", "rheumatology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["musculoskeletal"],
+      "disciplines": ["rheumatology"]
+    }
+  },
+  {
+    "id": "clin-musculoskeletal-03",
+    "question": "First-line therapy for osteoporosis in a postmenopausal woman at high fracture risk is:",
+    "choices": [
+      "Calcitonin nasal spray",
+      "Bisphosphonate",
+      "Teriparatide",
+      "Raloxifene"
+    ],
+    "answerIndex": 1,
+    "explanation": "Oral bisphosphonates (e.g., alendronate) are first-line for most patients with osteoporosis.",
+    "topics": ["musculoskeletal", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["musculoskeletal"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "pre-hematology-01",
+    "question": "Which enzyme deficiency results in impaired HMP shunt activity and susceptibility to oxidative stress in red blood cells?",
+    "choices": [
+      "Pyruvate kinase",
+      "G6PD",
+      "Adenosine deaminase",
+      "Hexokinase"
+    ],
+    "answerIndex": 1,
+    "explanation": "Glucose-6-phosphate dehydrogenase deficiency limits NADPH production and predisposes to hemolysis.",
+    "topics": ["hematology", "preclinical", "biochemistry"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["hematology"],
+      "disciplines": ["biochemistry"]
+    }
+  },
+  {
+    "id": "pre-hematology-02",
+    "question": "Which coagulation factor is vitamin K-dependent and part of the extrinsic pathway?",
+    "choices": [
+      "Factor VIII",
+      "Factor IX",
+      "Factor VII",
+      "Factor XI"
+    ],
+    "answerIndex": 2,
+    "explanation": "Vitamin K is required for gamma-carboxylation of factors II, VII, IX, X, C, and S.",
+    "topics": ["hematology", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["hematology"],
+      "disciplines": ["physiology"]
+    }
+  },
+  {
+    "id": "pre-hematology-03",
+    "question": "Which hemoglobin chain is mutated in sickle cell disease?",
+    "choices": [
+      "Alpha chain",
+      "Beta chain",
+      "Gamma chain",
+      "Delta chain"
+    ],
+    "answerIndex": 1,
+    "explanation": "A point mutation in the beta-globin gene (Glu→Val) causes polymerization under deoxygenated states.",
+    "topics": ["hematology", "preclinical", "genetics"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["hematology"],
+      "disciplines": ["genetics"]
+    }
+  },
+  {
+    "id": "clin-hematology-01",
+    "question": "A patient on warfarin presents with an INR of 6 but no bleeding. What is the best initial management?",
+    "choices": [
+      "Administer IV vitamin K and PCC",
+      "Hold warfarin and give oral vitamin K",
+      "Continue warfarin and monitor",
+      "Switch to heparin"
+    ],
+    "answerIndex": 1,
+    "explanation": "For supratherapeutic INR without bleeding, hold warfarin and give low-dose oral vitamin K.",
+    "topics": ["hematology", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["hematology"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "clin-hematology-02",
+    "question": "A 5-year-old presents with pancytopenia after viral illness; bone marrow shows hypocellularity. Which diagnosis fits?",
+    "choices": [
+      "Acute lymphoblastic leukemia",
+      "Aplastic anemia",
+      "Myelofibrosis",
+      "Megaloblastic anemia"
+    ],
+    "answerIndex": 1,
+    "explanation": "Aplastic anemia presents with pancytopenia and hypocellular marrow often triggered by viruses or drugs.",
+    "topics": ["hematology", "clinical", "pathology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["hematology"],
+      "disciplines": ["pathology"]
+    }
+  },
+  {
+    "id": "clin-hematology-03",
+    "question": "Which therapy is first-line for warm autoimmune hemolytic anemia?",
+    "choices": [
+      "High-dose steroids",
+      "Splenectomy",
+      "Plasmapheresis",
+      "Cyclophosphamide"
+    ],
+    "answerIndex": 0,
+    "explanation": "Glucocorticoids reduce autoantibody production and are initial therapy for warm AIHA.",
+    "topics": ["hematology", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["hematology"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "pre-dermatology-01",
+    "question": "Melanocytes are derived from which embryologic cell population?",
+    "choices": [
+      "Surface ectoderm",
+      "Neural crest cells",
+      "Mesoderm",
+      "Endoderm"
+    ],
+    "answerIndex": 1,
+    "explanation": "Melanocytes originate from neural crest cells and migrate to the epidermis.",
+    "topics": ["dermatology", "preclinical", "embryology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["dermatology"],
+      "disciplines": ["embryology"]
+    }
+  },
+  {
+    "id": "pre-dermatology-02",
+    "question": "Which epidermal layer contains actively dividing keratinocyte stem cells?",
+    "choices": [
+      "Stratum corneum",
+      "Stratum granulosum",
+      "Stratum spinosum",
+      "Stratum basale"
+    ],
+    "answerIndex": 3,
+    "explanation": "The basal layer houses proliferative keratinocytes responsible for regenerating epidermis.",
+    "topics": ["dermatology", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["dermatology"],
+      "disciplines": ["histology"]
+    }
+  },
+  {
+    "id": "pre-dermatology-03",
+    "question": "Which hypersensitivity type underlies allergic contact dermatitis?",
+    "choices": [
+      "Type I",
+      "Type II",
+      "Type III",
+      "Type IV"
+    ],
+    "answerIndex": 3,
+    "explanation": "Contact dermatitis is a T-cell mediated delayed (type IV) hypersensitivity reaction.",
+    "topics": ["dermatology", "preclinical", "immunology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["dermatology"],
+      "disciplines": ["immunology"]
+    }
+  },
+  {
+    "id": "clin-dermatology-01",
+    "question": "A patient with silvery scaling plaques on extensor surfaces likely has which diagnosis?",
+    "choices": [
+      "Psoriasis",
+      "Atopic dermatitis",
+      "Seborrheic dermatitis",
+      "Tinea corporis"
+    ],
+    "answerIndex": 0,
+    "explanation": "Well-demarcated plaques with silvery scale on extensor surfaces are classic for psoriasis.",
+    "topics": ["dermatology", "clinical"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["dermatology"],
+      "disciplines": ["dermatology"]
+    }
+  },
+  {
+    "id": "clin-dermatology-02",
+    "question": "Which biologic targets IL-17A to treat moderate-to-severe plaque psoriasis?",
+    "choices": [
+      "Adalimumab",
+      "Ustekinumab",
+      "Secukinumab",
+      "Dupilumab"
+    ],
+    "answerIndex": 2,
+    "explanation": "Secukinumab is an IL-17A inhibitor effective for plaque psoriasis.",
+    "topics": ["dermatology", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["dermatology"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "clin-dermatology-03",
+    "question": "A patient treats acne with topical retinoids. What is their mechanism?",
+    "choices": [
+      "Bind androgen receptors",
+      "Decrease keratinocyte cohesion and normalize desquamation",
+      "Act as antimicrobial against Cutibacterium acnes",
+      "Reduce sebum production by blocking 5α-reductase"
+    ],
+    "answerIndex": 1,
+    "explanation": "Topical retinoids normalize follicular keratinization and prevent microcomedone formation.",
+    "topics": ["dermatology", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["dermatology"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "pre-psychiatry-01",
+    "question": "Which neurotransmitter is primarily increased by selective serotonin reuptake inhibitors?",
+    "choices": [
+      "Norepinephrine",
+      "Serotonin",
+      "Dopamine",
+      "GABA"
+    ],
+    "answerIndex": 1,
+    "explanation": "SSRIs block serotonin reuptake transporters, increasing synaptic serotonin.",
+    "topics": ["psychiatry", "preclinical", "pharmacology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["psychiatry"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "pre-psychiatry-02",
+    "question": "Which defense mechanism involves transferring unacceptable feelings to a safer substitute target?",
+    "choices": [
+      "Projection",
+      "Displacement",
+      "Reaction formation",
+      "Sublimation"
+    ],
+    "answerIndex": 1,
+    "explanation": "Displacement shifts emotions from the original source to a safer substitute object or person.",
+    "topics": ["psychiatry", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["psychiatry"],
+      "disciplines": ["behavioral-science"]
+    }
+  },
+  {
+    "id": "pre-psychiatry-03",
+    "question": "Which sleep stage is associated with sleep spindles on EEG?",
+    "choices": [
+      "N1",
+      "N2",
+      "N3",
+      "REM sleep"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stage N2 sleep shows sleep spindles and K-complexes and occupies most total sleep time.",
+    "topics": ["psychiatry", "preclinical", "neurophysiology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["psychiatry"],
+      "disciplines": ["neurophysiology"]
+    }
+  },
+  {
+    "id": "clin-psychiatry-01",
+    "question": "Which medication is first-line for generalized anxiety disorder?",
+    "choices": [
+      "Buspirone",
+      "Diazepam",
+      "Lithium",
+      "Haloperidol"
+    ],
+    "answerIndex": 0,
+    "explanation": "Buspirone is a non-benzodiazepine anxiolytic for chronic GAD without sedation or dependence.",
+    "topics": ["psychiatry", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["psychiatry"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "clin-psychiatry-02",
+    "question": "A patient with bipolar disorder is stabilized on lithium. Which lab should be monitored every 6-12 months?",
+    "choices": [
+      "Serum calcium",
+      "Thyroid-stimulating hormone",
+      "Vitamin B12",
+      "Ferritin"
+    ],
+    "answerIndex": 1,
+    "explanation": "Lithium can cause hypothyroidism; TSH should be monitored periodically.",
+    "topics": ["psychiatry", "clinical"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["psychiatry"],
+      "disciplines": ["endocrinology"]
+    }
+  },
+  {
+    "id": "clin-psychiatry-03",
+    "question": "A patient presents with hallucinations and delusions for 1 month following methamphetamine binge. Diagnosis?",
+    "choices": [
+      "Brief psychotic disorder",
+      "Schizophreniform disorder",
+      "Substance-induced psychotic disorder",
+      "Schizophrenia"
+    ],
+    "answerIndex": 2,
+    "explanation": "Psychotic symptoms temporally related to intoxication suggest substance-induced psychosis.",
+    "topics": ["psychiatry", "clinical"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["psychiatry"],
+      "disciplines": ["psychiatry"]
+    }
+  },
+  {
+    "id": "pre-infectious-01",
+    "question": "Which bacterial structure is required for Neisseria gonorrhoeae attachment to mucosal surfaces?",
+    "choices": [
+      "Polysaccharide capsule",
+      "Pili (fimbriae)",
+      "Flagella",
+      "Endotoxin"
+    ],
+    "answerIndex": 1,
+    "explanation": "Pili mediate adherence and antigenic variation, aiding immune evasion.",
+    "topics": ["infectious-disease", "preclinical", "microbiology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["infectious-disease"],
+      "disciplines": ["microbiology"]
+    }
+  },
+  {
+    "id": "pre-infectious-02",
+    "question": "Which virus has a segmented, double-stranded RNA genome allowing reassortment?",
+    "choices": [
+      "Influenza virus",
+      "Hepatitis C virus",
+      "Measles virus",
+      "Norovirus"
+    ],
+    "answerIndex": 0,
+    "explanation": "Orthomyxovirus (influenza) has a segmented (-) ssRNA genome enabling antigenic shift.",
+    "topics": ["infectious-disease", "preclinical", "virology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["infectious-disease"],
+      "disciplines": ["virology"]
+    }
+  },
+  {
+    "id": "pre-infectious-03",
+    "question": "Gram-positive branching filamentous bacteria that are weakly acid-fast describe which organism?",
+    "choices": [
+      "Actinomyces israelii",
+      "Nocardia asteroides",
+      "Mycobacterium tuberculosis",
+      "Listeria monocytogenes"
+    ],
+    "answerIndex": 1,
+    "explanation": "Nocardia species are gram-positive rods with branching filaments and partial acid-fastness.",
+    "topics": ["infectious-disease", "preclinical", "microbiology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["infectious-disease"],
+      "disciplines": ["microbiology"]
+    }
+  },
+  {
+    "id": "clin-infectious-01",
+    "question": "First-line therapy for uncomplicated cystitis in non-pregnant women is:",
+    "choices": [
+      "Nitrofurantoin",
+      "Vancomycin",
+      "Gentamicin",
+      "Ciprofloxacin for 14 days"
+    ],
+    "answerIndex": 0,
+    "explanation": "Nitrofurantoin is first-line for uncomplicated cystitis given low resistance and urinary concentration.",
+    "topics": ["infectious-disease", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["infectious-disease"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "clin-infectious-02",
+    "question": "A patient presents with fever, bradycardia, and rose-colored spots on the abdomen after travel to South Asia. Which pathogen is likely?",
+    "choices": [
+      "Salmonella enterica serotype Typhi",
+      "Shigella sonnei",
+      "Vibrio cholerae",
+      "Campylobacter jejuni"
+    ],
+    "answerIndex": 0,
+    "explanation": "The description matches typhoid fever caused by Salmonella Typhi.",
+    "topics": ["infectious-disease", "clinical", "travel-medicine"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["infectious-disease"],
+      "disciplines": ["infectious-disease"]
+    }
+  },
+  {
+    "id": "clin-infectious-03",
+    "question": "How soon should HIV post-exposure prophylaxis be initiated after a high-risk exposure?",
+    "choices": [
+      "Within 6 hours",
+      "Within 24 hours",
+      "Within 72 hours",
+      "Within 7 days"
+    ],
+    "answerIndex": 2,
+    "explanation": "HIV PEP should begin as soon as possible and within 72 hours to be effective.",
+    "topics": ["infectious-disease", "clinical", "public-health"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["infectious-disease"],
+      "disciplines": ["public-health"]
+    }
+  },
+  {
+    "id": "pre-immunology-01",
+    "question": "Which immunoglobulin isotype is produced first during a primary immune response?",
+    "choices": [
+      "IgG",
+      "IgA",
+      "IgM",
+      "IgE"
+    ],
+    "answerIndex": 2,
+    "explanation": "IgM is produced first and later class switches to other isotypes.",
+    "topics": ["immunology", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["immunology"],
+      "disciplines": ["immunology"]
+    }
+  },
+  {
+    "id": "pre-immunology-02",
+    "question": "Which cells express MHC class II molecules?",
+    "choices": [
+      "All nucleated cells",
+      "Erythrocytes",
+      "Professional antigen-presenting cells",
+      "Platelets"
+    ],
+    "answerIndex": 2,
+    "explanation": "Dendritic cells, macrophages, and B cells express MHC II to present to CD4+ T cells.",
+    "topics": ["immunology", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["immunology"],
+      "disciplines": ["immunology"]
+    }
+  },
+  {
+    "id": "pre-immunology-03",
+    "question": "Central tolerance in T cells primarily occurs in which location?",
+    "choices": [
+      "Bone marrow",
+      "Thymic cortex and medulla",
+      "Spleen",
+      "Peripheral lymph nodes"
+    ],
+    "answerIndex": 1,
+    "explanation": "Positive selection occurs in the thymic cortex and negative selection in the medulla to ensure tolerance.",
+    "topics": ["immunology", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["immunology"],
+      "disciplines": ["immunology"]
+    }
+  },
+  {
+    "id": "clin-immunology-01",
+    "question": "A patient with recurrent Neisseria infections likely has deficiency of which complement component?",
+    "choices": [
+      "C1 esterase inhibitor",
+      "C3",
+      "C5–C9 (MAC)",
+      "Factor H"
+    ],
+    "answerIndex": 2,
+    "explanation": "Terminal complement deficiencies (C5–C9) predispose to recurrent Neisseria bacteremia.",
+    "topics": ["immunology", "clinical"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["immunology"],
+      "disciplines": ["infectious-disease"]
+    }
+  },
+  {
+    "id": "clin-immunology-02",
+    "question": "Treatment for hereditary angioedema due to C1 esterase inhibitor deficiency includes:",
+    "choices": [
+      "ACE inhibitors",
+      "Bradykinin receptor antagonist",
+      "Omalizumab",
+      "Rituximab"
+    ],
+    "answerIndex": 1,
+    "explanation": "Icatibant, a bradykinin B2 receptor antagonist, is used in acute hereditary angioedema attacks.",
+    "topics": ["immunology", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["immunology"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "clin-immunology-03",
+    "question": "Which vaccine type contains inactivated toxins to elicit immunity?",
+    "choices": [
+      "Toxoid vaccine",
+      "Live attenuated vaccine",
+      "Subunit vaccine",
+      "mRNA vaccine"
+    ],
+    "answerIndex": 0,
+    "explanation": "Toxoid vaccines (e.g., diphtheria, tetanus) inactivate exotoxins while retaining antigenicity.",
+    "topics": ["immunology", "clinical", "public-health"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["immunology"],
+      "disciplines": ["public-health"]
+    }
+  },
+  {
+    "id": "pre-genetics-01",
+    "question": "Which inheritance pattern results in affected males transmitting the trait to all daughters but no sons?",
+    "choices": [
+      "Autosomal dominant",
+      "Autosomal recessive",
+      "X-linked dominant",
+      "Mitochondrial"
+    ],
+    "answerIndex": 2,
+    "explanation": "In X-linked dominant disorders, affected males pass the mutation to all daughters but no sons.",
+    "topics": ["genetics", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["genetics"],
+      "disciplines": ["genetics"]
+    }
+  },
+  {
+    "id": "pre-genetics-02",
+    "question": "Which chromosomal abnormality is caused by nondisjunction leading to trisomy 21?",
+    "choices": [
+      "Down syndrome",
+      "Edwards syndrome",
+      "Patau syndrome",
+      "Turner syndrome"
+    ],
+    "answerIndex": 0,
+    "explanation": "Down syndrome results from trisomy 21, most commonly due to meiotic nondisjunction.",
+    "topics": ["genetics", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["genetics"],
+      "disciplines": ["genetics"]
+    }
+  },
+  {
+    "id": "pre-genetics-03",
+    "question": "Which epigenetic modification typically silences gene transcription?",
+    "choices": [
+      "Histone acetylation",
+      "DNA methylation",
+      "Histone phosphorylation",
+      "Chromatin remodeling by SWI/SNF"
+    ],
+    "answerIndex": 1,
+    "explanation": "DNA methylation condenses chromatin and usually represses gene expression.",
+    "topics": ["genetics", "preclinical", "epigenetics"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["genetics"],
+      "disciplines": ["epigenetics"]
+    }
+  },
+  {
+    "id": "clin-genetics-01",
+    "question": "A patient with tall stature, long limbs, and aortic root dilation likely has which mutation?",
+    "choices": [
+      "Fibrillin-1 mutation",
+      "COL5A1 mutation",
+      "HFE mutation",
+      "CFTR mutation"
+    ],
+    "answerIndex": 0,
+    "explanation": "Marfan syndrome is caused by mutations in FBN1 coding for fibrillin-1.",
+    "topics": ["genetics", "clinical"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["genetics"],
+      "disciplines": ["cardiology"]
+    }
+  },
+  {
+    "id": "clin-genetics-02",
+    "question": "Carrier screening reveals both parents have CFTR mutations. What is the risk their child is affected?",
+    "choices": [
+      "0%",
+      "25%",
+      "50%",
+      "75%"
+    ],
+    "answerIndex": 1,
+    "explanation": "Cystic fibrosis is autosomal recessive; two carriers have a 25% chance of an affected child.",
+    "topics": ["genetics", "clinical", "counseling"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["genetics"],
+      "disciplines": ["genetic-counseling"]
+    }
+  },
+  {
+    "id": "clin-genetics-03",
+    "question": "Which testing modality detects microdeletions like 22q11.2 in DiGeorge syndrome?",
+    "choices": [
+      "Karyotype",
+      "Fluorescence in situ hybridization (FISH)",
+      "PCR of microsatellites",
+      "Southern blot"
+    ],
+    "answerIndex": 1,
+    "explanation": "FISH can detect small chromosomal deletions not visible on standard karyotype.",
+    "topics": ["genetics", "clinical", "diagnostics"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["genetics"],
+      "disciplines": ["diagnostics"]
+    }
+  },
+  {
+    "id": "pre-pediatrics-01",
+    "question": "Surfactant production in fetal lungs markedly increases after which gestational week?",
+    "choices": [
+      "20 weeks",
+      "24 weeks",
+      "28 weeks",
+      "34 weeks"
+    ],
+    "answerIndex": 3,
+    "explanation": "Type II pneumocytes mature and produce adequate surfactant after approximately 34 weeks gestation.",
+    "topics": ["pediatrics", "preclinical", "embryology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["pediatrics"],
+      "disciplines": ["embryology"]
+    }
+  },
+  {
+    "id": "pre-pediatrics-02",
+    "question": "Which congenital heart defect is associated with a fixed split S2?",
+    "choices": [
+      "Patent ductus arteriosus",
+      "Tetralogy of Fallot",
+      "Atrial septal defect",
+      "Coarctation of the aorta"
+    ],
+    "answerIndex": 2,
+    "explanation": "ASD causes increased right heart flow leading to a fixed, wide splitting of S2.",
+    "topics": ["pediatrics", "preclinical", "cardiology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["pediatrics"],
+      "disciplines": ["cardiology"]
+    }
+  },
+  {
+    "id": "pre-pediatrics-03",
+    "question": "Which neonatal reflex involves stroking the cheek to induce head turning and sucking?",
+    "choices": [
+      "Moro",
+      "Rooting",
+      "Palmar grasp",
+      "Babinski"
+    ],
+    "answerIndex": 1,
+    "explanation": "The rooting reflex aids feeding by turning the head toward the stimulus and initiating sucking.",
+    "topics": ["pediatrics", "preclinical", "neurodevelopment"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["pediatrics"],
+      "disciplines": ["neurodevelopment"]
+    }
+  },
+  {
+    "id": "clin-pediatrics-01",
+    "question": "A 2-year-old with stridor and barking cough after a URI most likely has:",
+    "choices": [
+      "Epiglottitis",
+      "Foreign body aspiration",
+      "Croup (laryngotracheitis)",
+      "Bacterial tracheitis"
+    ],
+    "answerIndex": 2,
+    "explanation": "Parainfluenza virus causes croup with barking cough and inspiratory stridor.",
+    "topics": ["pediatrics", "clinical", "infectious-disease"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["pediatrics"],
+      "disciplines": ["infectious-disease"]
+    }
+  },
+  {
+    "id": "clin-pediatrics-02",
+    "question": "First-line therapy for Kawasaki disease is:",
+    "choices": [
+      "High-dose aspirin and IVIG",
+      "Penicillin",
+      "Prednisone alone",
+      "Plasmapheresis"
+    ],
+    "answerIndex": 0,
+    "explanation": "IV immunoglobulin plus high-dose aspirin reduces coronary aneurysm risk.",
+    "topics": ["pediatrics", "clinical", "rheumatology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["pediatrics"],
+      "disciplines": ["rheumatology"]
+    }
+  },
+  {
+    "id": "clin-pediatrics-03",
+    "question": "A neonate with vomiting and abdominal distension fails to pass meconium. Rectal biopsy shows absent ganglion cells. Diagnosis?",
+    "choices": [
+      "Meconium plug syndrome",
+      "Hirschsprung disease",
+      "Necrotizing enterocolitis",
+      "Pyloric stenosis"
+    ],
+    "answerIndex": 1,
+    "explanation": "Hirschsprung disease results from failure of neural crest migration leading to aganglionic segments.",
+    "topics": ["pediatrics", "clinical", "gastroenterology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["pediatrics"],
+      "disciplines": ["gastroenterology"]
+    }
+  },
+  {
+    "id": "pre-geriatrics-01",
+    "question": "Which pharmacokinetic change occurs with normal aging?",
+    "choices": [
+      "Increased renal clearance",
+      "Decreased volume of distribution for lipophilic drugs",
+      "Decreased hepatic metabolism",
+      "Increased first-pass metabolism"
+    ],
+    "answerIndex": 2,
+    "explanation": "Aging reduces hepatic blood flow and metabolism, increasing drug half-life for hepatically cleared agents.",
+    "topics": ["geriatrics", "preclinical", "pharmacology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["geriatrics"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "pre-geriatrics-02",
+    "question": "Which cognitive domain is most preserved with normal aging?",
+    "choices": [
+      "Processing speed",
+      "Remote memory",
+      "Working memory",
+      "Executive function"
+    ],
+    "answerIndex": 1,
+    "explanation": "Normal aging features mild decline in processing speed but preservation of remote long-term memory.",
+    "topics": ["geriatrics", "preclinical", "neuropsychology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["geriatrics"],
+      "disciplines": ["neuropsychology"]
+    }
+  },
+  {
+    "id": "pre-geriatrics-03",
+    "question": "Which physiologic change contributes to orthostatic hypotension in older adults?",
+    "choices": [
+      "Enhanced baroreceptor sensitivity",
+      "Decreased arterial compliance",
+      "Increased plasma renin activity",
+      "Higher cardiac output"
+    ],
+    "answerIndex": 1,
+    "explanation": "Arterial stiffness impairs baroreceptor reflexes, predisposing to orthostatic hypotension.",
+    "topics": ["geriatrics", "preclinical", "physiology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["geriatrics"],
+      "disciplines": ["physiology"]
+    }
+  },
+  {
+    "id": "clin-geriatrics-01",
+    "question": "Which screening tool is recommended annually to assess fall risk in older adults?",
+    "choices": [
+      "Timed Up and Go test",
+      "Mini-Cog",
+      "PHQ-9",
+      "MoCA"
+    ],
+    "answerIndex": 0,
+    "explanation": "The Timed Up and Go test evaluates gait and balance to identify fall risk.",
+    "topics": ["geriatrics", "clinical", "preventive-medicine"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["geriatrics"],
+      "disciplines": ["preventive-medicine"]
+    }
+  },
+  {
+    "id": "clin-geriatrics-02",
+    "question": "A frail older adult with polypharmacy develops confusion after starting diphenhydramine. This is due to:",
+    "choices": [
+      "Cholinergic excess",
+      "Anticholinergic burden",
+      "Serotonin syndrome",
+      "Opioid withdrawal"
+    ],
+    "answerIndex": 1,
+    "explanation": "Anticholinergic medications frequently cause delirium in older adults; minimize such agents.",
+    "topics": ["geriatrics", "clinical", "pharmacology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["geriatrics"],
+      "disciplines": ["pharmacology"]
+    }
+  },
+  {
+    "id": "clin-geriatrics-03",
+    "question": "Which vaccine is recommended once after age 65 regardless of prior pneumococcal vaccination history?",
+    "choices": [
+      "PPSV23",
+      "PCV20 (or PCV15 followed by PPSV23)",
+      "Zoster live vaccine",
+      "HPV vaccine"
+    ],
+    "answerIndex": 1,
+    "explanation": "Current guidelines recommend either a single PCV20 or PCV15 followed by PPSV23 for adults ≥65.",
+    "topics": ["geriatrics", "clinical", "public-health"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["geriatrics"],
+      "disciplines": ["public-health"]
+    }
+  },
+  {
+    "id": "pre-emergency-01",
+    "question": "The shock index is calculated by dividing heart rate by which parameter?",
+    "choices": [
+      "Systolic blood pressure",
+      "Diastolic blood pressure",
+      "Mean arterial pressure",
+      "Respiratory rate"
+    ],
+    "answerIndex": 0,
+    "explanation": "Shock index = HR/SBP; values >0.9 suggest hemodynamic instability.",
+    "topics": ["emergency-medicine", "preclinical", "physiology"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["emergency-medicine"],
+      "disciplines": ["physiology"]
+    }
+  },
+  {
+    "id": "pre-emergency-02",
+    "question": "In trauma resuscitation, the lethal triad consists of acidosis, coagulopathy, and:",
+    "choices": [
+      "Hypercalcemia",
+      "Hypothermia",
+      "Hyperkalemia",
+      "Hypertension"
+    ],
+    "answerIndex": 1,
+    "explanation": "Hypothermia exacerbates coagulopathy and acidosis; preventing it is critical in trauma care.",
+    "topics": ["emergency-medicine", "preclinical"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["emergency-medicine"],
+      "disciplines": ["surgery"]
+    }
+  },
+  {
+    "id": "pre-emergency-03",
+    "question": "Which airway maneuver is preferred in suspected cervical spine injury?",
+    "choices": [
+      "Head-tilt chin-lift",
+      "Jaw thrust",
+      "Sellick maneuver",
+      "Valsalva maneuver"
+    ],
+    "answerIndex": 1,
+    "explanation": "Jaw thrust maintains airway patency without neck movement, protecting the cervical spine.",
+    "topics": ["emergency-medicine", "preclinical", "airway-management"],
+    "tags": {
+      "phase": "preclinical",
+      "systems": ["emergency-medicine"],
+      "disciplines": ["emergency-medicine"]
+    }
+  },
+  {
+    "id": "clin-emergency-01",
+    "question": "A trauma patient has tension pneumothorax. Initial management is:",
+    "choices": [
+      "Endotracheal intubation",
+      "Needle decompression in the 2nd intercostal space midclavicular line",
+      "Immediate chest tube at the 5th intercostal space midaxillary line without decompression",
+      "CT scan of the chest"
+    ],
+    "answerIndex": 1,
+    "explanation": "Emergent needle decompression relieves pressure before chest tube placement.",
+    "topics": ["emergency-medicine", "clinical", "trauma"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["emergency-medicine"],
+      "disciplines": ["trauma"]
+    }
+  },
+  {
+    "id": "clin-emergency-02",
+    "question": "Which medication reverses opioid overdose by competitively antagonizing mu receptors?",
+    "choices": [
+      "Naloxone",
+      "Flumazenil",
+      "Physostigmine",
+      "N-acetylcysteine"
+    ],
+    "answerIndex": 0,
+    "explanation": "Naloxone rapidly reverses opioid toxicity by displacing opioids from receptors.",
+    "topics": ["emergency-medicine", "clinical", "toxicology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["emergency-medicine"],
+      "disciplines": ["toxicology"]
+    }
+  },
+  {
+    "id": "clin-emergency-03",
+    "question": "Preferred treatment for unstable paroxysmal supraventricular tachycardia is:",
+    "choices": [
+      "Adenosine IV push",
+      "Synchronized cardioversion",
+      "Amiodarone infusion",
+      "Vagal maneuvers"
+    ],
+    "answerIndex": 1,
+    "explanation": "Hemodynamically unstable SVT requires immediate synchronized cardioversion.",
+    "topics": ["emergency-medicine", "clinical", "cardiology"],
+    "tags": {
+      "phase": "clinical",
+      "systems": ["emergency-medicine"],
+      "disciplines": ["cardiology"]
+    }
+  }
+]

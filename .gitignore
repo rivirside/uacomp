@@ -1,0 +1,10 @@
+node_modules/
+chroma_data/
+.env
+.DS_Store
+
+# SQLite database (created at runtime)
+data/bot.db
+
+# Uploaded resource files (user content)
+resources/guilds/

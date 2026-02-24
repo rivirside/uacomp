@@ -1,0 +1,317 @@
+{
+  "assignableRoles": [
+    {
+      "id": "ROLE_ID_SERVER_BOOSTER",
+      "label": "Server Booster",
+      "description": "Automatically granted by Discord to Nitro boosters. Leave here for reference if you want to expose it in /role."
+    },
+    {
+      "id": "ROLE_ID_MOD",
+      "label": "Mod",
+      "description": "Moderator permission set."
+    },
+    {
+      "id": "ROLE_ID_MALL_COPS",
+      "label": "Mall Cops",
+      "description": "Fun helper role for hallway monitors / helpers."
+    },
+    {
+      "id": "ROLE_ID_MS1",
+      "label": "MS1",
+      "description": "First-year students."
+    },
+    {
+      "id": "ROLE_ID_MS2",
+      "label": "MS2",
+      "description": "Second-year students."
+    },
+    {
+      "id": "ROLE_ID_MS3",
+      "label": "MS3",
+      "description": "Third-year clerkship students."
+    },
+    {
+      "id": "ROLE_ID_MS4",
+      "label": "MS4",
+      "description": "Fourth-year students / residency applicants."
+    },
+    {
+      "id": "ROLE_ID_MDPHD",
+      "label": "MD/PhD",
+      "description": "Physician-scientist training program."
+    },
+    {
+      "id": "ROLE_ID_PLM",
+      "label": "PLM",
+      "description": "Pathways Leadership & Management (or equivalent track)."
+    },
+    {
+      "id": "ROLE_ID_BLUE_TEAM",
+      "label": "Blue Team",
+      "description": "Learning community / team color."
+    },
+    {
+      "id": "ROLE_ID_RED_TEAM",
+      "label": "Red Team",
+      "description": "Learning community / team color."
+    },
+    {
+      "id": "ROLE_ID_YELLOW_TEAM",
+      "label": "Yellow Team",
+      "description": "Learning community / team color."
+    },
+    {
+      "id": "ROLE_ID_WHITE_TEAM",
+      "label": "White Team",
+      "description": "Learning community / team color."
+    },
+    {
+      "id": "ROLE_ID_GLOBAL_HEALTH",
+      "label": "Global Health",
+      "description": "Students involved with global health initiatives."
+    },
+    {
+      "id": "ROLE_ID_DONOR_DAY",
+      "label": "Donor Day Planner",
+      "description": "Anatomy donor day planning committee."
+    },
+    {
+      "id": "ROLE_ID_EBM",
+      "label": "EBM",
+      "description": "Evidence-based medicine pathway."
+    },
+    {
+      "id": "ROLE_ID_PATHWAY",
+      "label": "Pathway",
+      "description": "General pathway role for specialty tracks."
+    },
+    {
+      "id": "ROLE_ID_MSG",
+      "label": "MSG",
+      "description": "Medical Student Government."
+    }
+  ],
+  "defaultRoleId": "200000000000000010",
+  "welcomeChannelId": "200000000000000011",
+  "archiveCategoryId": "200000000000000012",
+  "activeCategoryId": "200000000000000013",
+  "tutorSettings": {
+    "categoryId": "200000000000000020",
+    "roleIds": [
+      "ROLE_ID_TUTOR"
+    ],
+    "staffRoleIds": [
+      "ROLE_ID_MOD"
+    ],
+    "channelPrefix": "tutor-ticket",
+    "logChannelId": "200000000000000021"
+  },
+  "quizSettings": {
+    "pointsPerCorrect": 5,
+    "questionFile": "data/quiz-questions.json"
+  },
+  "serverStructure": [
+    {
+      "key": "medical-school",
+      "name": "Medical School",
+      "channels": [
+        { "name": "general-chat", "type": "text", "topic": "Anything med school related that doesn’t fit in the more specific channels." },
+        { "name": "ig-chip-and-cod-plugs", "type": "text", "topic": "Share Insta handles, CHIP updates, COD plug announcements, etc." },
+        { "name": "step1", "type": "text", "topic": "Step 1 / Level 1 discussion, resources, and venting." },
+        { "name": "clerkships", "type": "text", "topic": "Third-year rotation talk. Use /clerkships to reveal specific rotations." },
+        { "name": "cce", "type": "text", "topic": "Clinical Correlations & CCE updates." },
+        { "name": "doctoring", "type": "text", "topic": "Cross-year doctoring curriculum notes and reminders." },
+        { "name": "student-government", "type": "text", "topic": "MSG comms, surveys, and meeting recaps." },
+        { "name": "peer-learning-mentor", "type": "text", "topic": "PLM sign-ups, mentor matching, and question threads." },
+        { "name": "css-capstones", "type": "text", "topic": "Capstone project teams, milestones, and resources." },
+        { "name": "cbi-general-chat", "type": "text", "topic": "Case-Based Instruction coordination." },
+        { "name": "anki-cafe", "type": "text", "topic": "Deck sharing, tagging conventions, and accountability check-ins." },
+        { "name": "research", "type": "text", "topic": "Abstract deadlines, lab openings, and manuscript support." },
+        { "name": "resources", "type": "text", "topic": "Study guides, handouts, templates, and slides." },
+        { "name": "medical-spanish", "type": "text", "topic": "Practice partners and vocab decks for Med Spanish." },
+        { "name": "med-school-survival", "type": "text", "topic": "Life hacks, time management, and wellness chat." },
+        { "name": "rideshare", "type": "text", "topic": "Coordinate rides to clerkships, airports, and volunteer events." },
+        { "name": "pride-hub", "type": "text", "topic": "LGBTQIA+ student space and announcements." },
+        { "name": "advocacy", "type": "text", "topic": "Organizing opportunities and advocacy updates." },
+        { "name": "emergency-alerts", "type": "announcement", "topic": "Urgent safety/weather alerts pushed by MSG/admins." },
+        { "name": "research-forum", "type": "forum", "topic": "Threaded discussion for study design critique and feedback." },
+        { "name": "gh", "type": "text", "topic": "Global Health program updates (pairs with the GH role)." },
+        { "name": "pathways", "type": "text", "topic": "Announcements for the Pathways program." }
+      ]
+    },
+    {
+      "key": "blocks",
+      "name": "Blocks",
+      "channels": [
+        {
+          "name": "doctoring",
+          "type": "text",
+          "topic": "Doctoring I & II small group logistics, faculty info, and reflection prompts."
+        },
+        {
+          "name": "anatomy",
+          "type": "text",
+          "topic": "Cadaver lab schedules, dissection tips, and anatomy review resources."
+        },
+        {
+          "name": "cardiovascular-heme",
+          "type": "text",
+          "topic": "Cardiology + hematology block: study guides, practice questions, and Q&A."
+        },
+        {
+          "name": "pulmonary-renal-acid-base",
+          "type": "text",
+          "topic": "Pulm/Renal/Acid-Base: pass along lecture pearls, renal puzzles, and ABG practice."
+        },
+        {
+          "name": "gastrointestinal-nutrition",
+          "type": "text",
+          "topic": "GI and nutrition block resources and discussion."
+        },
+        {
+          "name": "endocrine-reproductive",
+          "type": "text",
+          "topic": "Endocrine + reproductive block updates."
+        },
+        {
+          "name": "musculoskeletal-integument",
+          "type": "text",
+          "topic": "MSK + derm: MSK anatomy, MSK path, dermatology pearls."
+        },
+        {
+          "name": "neurology",
+          "type": "text",
+          "topic": "Neuro block questions, shelf study groups, and practice NBME discussions."
+        },
+        {
+          "name": "behavioral-science",
+          "type": "text",
+          "topic": "Psych, ethics, pop health, and patient communication topics."
+        },
+        {
+          "name": "board-prep",
+          "type": "text",
+          "topic": "Dedicated space for STEP/COMLEX planning and shared calendars."
+        }
+      ]
+    },
+    {
+      "key": "clerkships",
+      "name": "Clerkships",
+      "channels": [
+        {
+          "name": "internal-medicine",
+          "type": "text",
+          "topic": "IM rotation prep, exam tips, and sign-out templates."
+        },
+        {
+          "name": "general-surgery",
+          "type": "text",
+          "topic": "Surgery rotation: case lists, scrub notes, and pimp question banks."
+        },
+        {
+          "name": "pediatrics",
+          "type": "text",
+          "topic": "Peds rotation checklists, vaccine schedules, and shelf advice."
+        },
+        {
+          "name": "obgyn",
+          "type": "text",
+          "topic": "OB/GYN rotation orientation files and on-call pearls."
+        },
+        {
+          "name": "psychiatry",
+          "type": "text",
+          "topic": "Psych rotation resources and NBME study groups."
+        },
+        {
+          "name": "neurology-clerkship",
+          "type": "text",
+          "topic": "Neuro clerkship: templates, patient presentations, and call schedules."
+        },
+        {
+          "name": "family-medicine",
+          "type": "text",
+          "topic": "FM rotation guidance, clinic primers, and SOAP notes."
+        },
+        {
+          "name": "emergency-medicine",
+          "type": "text",
+          "topic": "ED rotation updates, procedure logs, and trauma pearls."
+        },
+        {
+          "name": "selectives-electives",
+          "type": "text",
+          "topic": "Space for radiology, anesthesia, and other electives."
+        }
+      ]
+    },
+    {
+      "key": "social",
+      "name": "Social",
+      "channels": [
+        {
+          "name": "events",
+          "type": "text",
+          "topic": "Class-wide events calendar, MS1/2 hangouts, and RSVP threads."
+        },
+        {
+          "name": "sports",
+          "type": "text",
+          "topic": "IM leagues, pickup games, race signups, and hiking meetups."
+        },
+        {
+          "name": "foodies",
+          "type": "text",
+          "topic": "Restaurant recs, meal prepping ideas, and post-exam dinner plans."
+        },
+        {
+          "name": "housing",
+          "type": "text",
+          "topic": "Roommate searches, lease questions, and sublet posts."
+        },
+        {
+          "name": "marketplace",
+          "type": "text",
+          "topic": "Buy/sell/trade equipment, scrubs, textbooks, and furniture."
+        },
+        {
+          "name": "memes",
+          "type": "text",
+          "topic": "Class humor, clean vents, and exam week morale boosts."
+        }
+      ]
+    },
+    {
+      "key": "admin",
+      "name": "Admin",
+      "channels": [
+        {
+          "name": "announcements",
+          "type": "announcement",
+          "topic": "Official notices from MSG, student affairs, and course directors."
+        },
+        {
+          "name": "student-gov",
+          "type": "text",
+          "topic": "MSG planning, meeting agendas, and action items."
+        },
+        {
+          "name": "student-org-ads",
+          "type": "text",
+          "topic": "Single stream for org promotions and event flyers."
+        },
+        {
+          "name": "certificates-of-distinction",
+          "type": "text",
+          "topic": "Announcements, applications, and FAQs for distinction tracks."
+        },
+        {
+          "name": "bot-logs",
+          "type": "text",
+          "topic": "Audit trail for slash commands, role changes, and calendar uploads."
+        }
+      ]
+    }
+  ]
+}
