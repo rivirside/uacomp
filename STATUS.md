@@ -97,7 +97,9 @@ Key files: `commands/calendar.js`, `data/knowledge/`, `scripts/`, `rag/indexer.j
 | `/quiz list [topic]` — browse question bank, up to 25 shown | done |
 | `/quiz remove` — admin removes question via autocomplete | done |
 
-Key files: `commands/announce.js`, `commands/quiz.js`, `docs/COMMANDS.md`
+| `messageCreate` — @mention bot for conversational chat with channel history context | done |
+
+Key files: `commands/announce.js`, `commands/quiz.js`, `index.js`, `docs/COMMANDS.md`
 
 ---
 
