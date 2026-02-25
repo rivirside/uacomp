@@ -9,7 +9,7 @@ const {
 } = require('discord.js');
 
 const { getDb }                = require('./db');
-const { indexGuildResources }  = require('./rag/indexer');
+const { indexGuildResources, indexGuildLinks } = require('./rag/indexer');
 const { startScheduler }       = require('./scheduler');
 const config             = require('./config.json');
 
@@ -76,7 +76,12 @@ client.once('clientReady', async () => {
     try {
       await indexGuildResources(gid, db);
     } catch (err) {
-      console.error(`[RAG] Indexing failed for guild ${gid}:`, err.message);
+      console.error(`[RAG] Resource indexing failed for guild ${gid}:`, err.message);
+    }
+    try {
+      await indexGuildLinks(gid, db);
+    } catch (err) {
+      console.error(`[RAG] Link indexing failed for guild ${gid}:`, err.message);
     }
   }
 

@@ -306,4 +306,70 @@ async function indexLink(linkRow, pageText, db) {
   return { chunks: chunks.length };
 }
 
-module.exports = { indexGuildResources, indexSingleResource, removeResourceFromIndex, indexLink, removeLinkFromIndex };
+// ---------------------------------------------------------------------------
+// Index all links for a guild — called at startup for links not yet in Chroma
+// ---------------------------------------------------------------------------
+
+/**
+ * For each active link in the guild that has no ChromaDB entry yet, fetch its
+ * URL and index it. Links added via the seed script bypass the normal /link add
+ * flow, so they need to be indexed here on first startup.
+ *
+ * @param {string} guildId
+ * @param {import('better-sqlite3').Database} db
+ * @returns {Promise<{ indexed: number, skipped: number, failed: number }>}
+ */
+async function indexGuildLinks(guildId, db) {
+  const collection = await getCollection();
+
+  const rows = db.prepare(
+    `SELECT id, guild_id, url, title, description, course_id
+     FROM links WHERE guild_id = ? AND active = 1`
+  ).all(guildId);
+
+  let indexed = 0;
+  let skipped = 0;
+  let failed  = 0;
+
+  for (const row of rows) {
+    // Check if already indexed (any chunk exists for this link_id)
+    const existing = await collection.get({
+      where: { link_id: { $eq: row.id } },
+      limit: 1
+    });
+    if (existing.ids.length > 0) { skipped++; continue; }
+
+    // Build page text: try fetching URL, fall back to title + description
+    let pageText = [row.title, row.description].filter(Boolean).join('\n\n');
+    try {
+      const resp = await fetch(row.url, { signal: AbortSignal.timeout(10000) });
+      if (resp.ok) {
+        const html = await resp.text();
+        // Strip HTML tags and collapse whitespace
+        const stripped = html
+          .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+          .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+          .replace(/<[^>]+>/g, ' ')
+          .replace(/\s{2,}/g, ' ')
+          .trim();
+        if (stripped.length > pageText.length) pageText = stripped;
+      }
+    } catch {
+      // Network failure — fall back to stored description
+    }
+
+    try {
+      const { chunks } = await indexLink(row, pageText, db);
+      indexed++;
+      console.log(`[RAG] Indexed link "${row.title}" (${chunks} chunks)`);
+    } catch (err) {
+      failed++;
+      console.warn(`[RAG] Failed to index link "${row.title}": ${err.message}`);
+    }
+  }
+
+  console.log(`[RAG] Links for guild ${guildId}: indexed ${indexed}, skipped ${skipped}, failed ${failed}`);
+  return { indexed, skipped, failed };
+}
+
+module.exports = { indexGuildResources, indexGuildLinks, indexSingleResource, removeResourceFromIndex, indexLink, removeLinkFromIndex };
