@@ -74,6 +74,7 @@ function parseIcsEvents(icsContent) {
         try {
           events.push({
             title:       cur.summary || 'Untitled event',
+            uid:         cur.uid || null,
             start:       cur.start.toISOString(),
             end:         cur.end ? cur.end.toISOString() : null,
             allDay:      Boolean(cur.allDay),
@@ -95,6 +96,7 @@ function parseIcsEvents(icsContent) {
       case 'SUMMARY':     cur.summary = parsed.value; break;
       case 'LOCATION':    cur.location = parsed.value; break;
       case 'DESCRIPTION': cur.description = parsed.value.replace(/\\n/g, '\n'); break;
+      case 'UID':         cur.uid = parsed.value; break;
       case 'CATEGORIES':
         cur.categories = parsed.value.split(',').map((s) => s.replace(/\\,/g, ',').trim()).filter(Boolean);
         break;
@@ -210,6 +212,39 @@ function fetchBufferViaHttp(url, redirectCount = 0) {
   });
 }
 
+function slugify(str) {
+  return (str || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+/**
+ * Given a list of category strings from an ICS CATEGORIES field, resolve the
+ * appropriate scope and optional group_id for calendar event storage.
+ *
+ * @param {import('better-sqlite3').Database} db
+ * @param {string} guildId
+ * @param {string[]} categories
+ * @returns {{ scope: string, groupId: number|null }}
+ */
+function resolveEventScope(db, guildId, categories) {
+  if (!Array.isArray(categories) || !categories.length) {
+    return { scope: 'university', groupId: null };
+  }
+
+  const slugs = categories.map(slugify).filter(Boolean);
+
+  if (slugs.includes('university')) return { scope: 'university', groupId: null };
+  if (slugs.includes('cohort'))     return { scope: 'cohort',     groupId: null };
+
+  for (const slug of slugs) {
+    const group = db.prepare(
+      'SELECT id FROM groups WHERE guild_id = ? AND name = ? AND active = 1'
+    ).get(guildId, slug);
+    if (group) return { scope: 'group', groupId: group.id };
+  }
+
+  return { scope: 'university', groupId: null };
+}
+
 module.exports = {
   parseIcsEvents,
   isUpcomingEvent,
@@ -218,5 +253,6 @@ module.exports = {
   sanitizeYearKey,
   parseManualDate,
   parseCategoriesInput,
-  downloadCalendarAttachment
+  downloadCalendarAttachment,
+  resolveEventScope
 };

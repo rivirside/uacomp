@@ -23,6 +23,7 @@ function getDb() {
 
   migrateQuizScores(_db);
   migrateCalendars(_db);
+  migrateCalendarScope(_db);
 
   return _db;
 }
@@ -119,6 +120,21 @@ function migrateCalendars(db) {
 
   run();
   console.log('[DB] Migrated calendar events from JSON files');
+}
+
+function migrateCalendarScope(db) {
+  const cols = db.prepare('PRAGMA table_info(calendar_events)').all().map((c) => c.name);
+  if (!cols.includes('scope')) {
+    db.exec("ALTER TABLE calendar_events ADD COLUMN scope TEXT NOT NULL DEFAULT 'university'");
+  }
+  if (!cols.includes('group_id')) {
+    db.exec('ALTER TABLE calendar_events ADD COLUMN group_id INTEGER REFERENCES groups(id) ON DELETE SET NULL');
+  }
+  db.exec(`CREATE INDEX IF NOT EXISTS idx_calendar_scope
+    ON calendar_events(guild_id, scope, group_id, start_at)`);
+  db.exec(`CREATE UNIQUE INDEX IF NOT EXISTS idx_calendar_uid
+    ON calendar_events(guild_id, external_uid) WHERE external_uid IS NOT NULL`);
+  console.log('[DB] Calendar scope migration done.');
 }
 
 module.exports = { getDb };

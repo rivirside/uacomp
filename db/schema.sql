@@ -114,3 +114,50 @@ CREATE TABLE IF NOT EXISTS flashcard_progress (
   reviews       INTEGER DEFAULT 0,
   UNIQUE(flashcard_id, user_id)
 );
+
+CREATE TABLE IF NOT EXISTS groups (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  guild_id   TEXT NOT NULL,
+  course_id  INTEGER REFERENCES courses(id) ON DELETE SET NULL,
+  name       TEXT NOT NULL,
+  label      TEXT NOT NULL,
+  type       TEXT NOT NULL DEFAULT 'other',
+  open       INTEGER NOT NULL DEFAULT 0,
+  lifespan   TEXT NOT NULL DEFAULT 'permanent',
+  active     INTEGER NOT NULL DEFAULT 1,
+  created_at INTEGER DEFAULT (unixepoch()),
+  UNIQUE(guild_id, name)
+);
+
+CREATE TABLE IF NOT EXISTS group_members (
+  id       INTEGER PRIMARY KEY AUTOINCREMENT,
+  group_id INTEGER NOT NULL REFERENCES groups(id) ON DELETE CASCADE,
+  user_id  TEXT NOT NULL,
+  added_by TEXT,
+  added_at INTEGER DEFAULT (unixepoch()),
+  UNIQUE(group_id, user_id)
+);
+
+CREATE TABLE IF NOT EXISTS calendar_subscriptions (
+  id           INTEGER PRIMARY KEY AUTOINCREMENT,
+  guild_id     TEXT NOT NULL,
+  url          TEXT NOT NULL,
+  scope        TEXT NOT NULL DEFAULT 'university',
+  group_id     INTEGER REFERENCES groups(id) ON DELETE CASCADE,
+  year_key     TEXT,
+  year_label   TEXT,
+  last_fetched INTEGER,
+  last_count   INTEGER DEFAULT 0,
+  created_at   INTEGER DEFAULT (unixepoch()),
+  UNIQUE(guild_id, url)
+);
+
+CREATE TABLE IF NOT EXISTS notification_channels (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  guild_id   TEXT NOT NULL,
+  scope      TEXT NOT NULL,
+  group_id   INTEGER REFERENCES groups(id) ON DELETE CASCADE,
+  channel_id TEXT NOT NULL,
+  type       TEXT NOT NULL DEFAULT 'digest',
+  UNIQUE(guild_id, scope, group_id, type)
+);
