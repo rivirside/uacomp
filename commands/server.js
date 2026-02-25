@@ -63,9 +63,9 @@ async function resetServerStructure(guild, actorTag) {
 
 async function syncConfig(guild, opts) {
   // Read fresh copy from disk so we don't operate on the cached require() object
-  const raw    = fs.readFileSync(CONFIG_PATH, 'utf8');
-  const cfg    = JSON.parse(raw);
-  const report = { matched: [], missing: [], set: [] };
+  const raw = fs.readFileSync(CONFIG_PATH, 'utf8');
+  const cfg = JSON.parse(raw);
+  const report = { matched: [], auto: [], set: [], missing: [] };
 
   await guild.roles.fetch();
   await guild.channels.fetch();
@@ -79,39 +79,82 @@ async function syncConfig(guild, opts) {
       entry.id = role.id;
       report.matched.push(`${entry.label} → <@&${role.id}>`);
     } else {
-      report.missing.push(`Role not found: **${entry.label}**`);
+      report.missing.push(`Assignable role not found: **${entry.label}**`);
     }
   }
 
-  // ── Singleton IDs from command options ─────────────────────────────────────
+  // ── Helpers ────────────────────────────────────────────────────────────────
+  const findChannel = (type, ...names) =>
+    guild.channels.cache.find(
+      (c) => c.type === type && names.includes(c.name.toLowerCase())
+    );
+  const findChannelContains = (type, substr) =>
+    guild.channels.cache.find(
+      (c) => c.type === type && c.name.toLowerCase().includes(substr)
+    );
+  const findRole = (...names) =>
+    guild.roles.cache.find((r) => names.includes(r.name.toLowerCase()));
+  const findRoleContains = (substr) =>
+    guild.roles.cache.find((r) => r.name.toLowerCase().includes(substr));
+
+  // ── Singleton IDs — explicit options take priority, then auto-detect ───────
+  cfg.tutorSettings = cfg.tutorSettings || {};
+
+  // defaultRoleId
   if (opts.defaultRole) {
     cfg.defaultRoleId = opts.defaultRole.id;
     report.set.push(`defaultRoleId → <@&${opts.defaultRole.id}>`);
+  } else {
+    const r = findRole('member', 'members', 'student', 'students');
+    if (r) { cfg.defaultRoleId = r.id; report.auto.push(`defaultRoleId → <@&${r.id}> (matched "${r.name}")`); }
+    else    { report.missing.push('defaultRoleId — no role named member/student found; pass `default-role` option'); }
   }
+
+  // welcomeChannelId
   if (opts.welcomeChannel) {
     cfg.welcomeChannelId = opts.welcomeChannel.id;
     report.set.push(`welcomeChannelId → <#${opts.welcomeChannel.id}>`);
+  } else {
+    const ch = findChannel(ChannelType.GuildText, 'general-chat', 'general', 'welcome', 'welcome-chat');
+    if (ch) { cfg.welcomeChannelId = ch.id; report.auto.push(`welcomeChannelId → <#${ch.id}> (matched "#${ch.name}")`); }
+    else    { report.missing.push('welcomeChannelId — no #general-chat/#general/#welcome found; pass `welcome-channel` option'); }
   }
+
+  // archiveCategoryId
   if (opts.archiveCategory) {
     cfg.archiveCategoryId = opts.archiveCategory.id;
     report.set.push(`archiveCategoryId → **${opts.archiveCategory.name}**`);
+  } else {
+    const cat = findChannelContains(ChannelType.GuildCategory, 'archive');
+    if (cat) { cfg.archiveCategoryId = cat.id; report.auto.push(`archiveCategoryId → **${cat.name}** (auto)`); }
+    else     { report.missing.push('archiveCategoryId — no category containing "archive" found; pass `archive-category` option or create an "Archive" category'); }
   }
 
-  // Tutor settings
-  if (opts.tutorCategory || opts.tutorRole || opts.tutorLog) {
-    cfg.tutorSettings = cfg.tutorSettings || {};
-    if (opts.tutorCategory) {
-      cfg.tutorSettings.categoryId = opts.tutorCategory.id;
-      report.set.push(`tutorSettings.categoryId → **${opts.tutorCategory.name}**`);
-    }
-    if (opts.tutorRole) {
-      cfg.tutorSettings.roleIds = [opts.tutorRole.id];
-      report.set.push(`tutorSettings.roleIds → <@&${opts.tutorRole.id}>`);
-    }
-    if (opts.tutorLog) {
-      cfg.tutorSettings.logChannelId = opts.tutorLog.id;
-      report.set.push(`tutorSettings.logChannelId → <#${opts.tutorLog.id}>`);
-    }
+  // tutorSettings.categoryId
+  if (opts.tutorCategory) {
+    cfg.tutorSettings.categoryId = opts.tutorCategory.id;
+    report.set.push(`tutorSettings.categoryId → **${opts.tutorCategory.name}**`);
+  } else {
+    const cat = findChannelContains(ChannelType.GuildCategory, 'tutor');
+    if (cat) { cfg.tutorSettings.categoryId = cat.id; report.auto.push(`tutorSettings.categoryId → **${cat.name}** (auto)`); }
+  }
+
+  // tutorSettings.roleIds
+  if (opts.tutorRole) {
+    cfg.tutorSettings.roleIds = [opts.tutorRole.id];
+    report.set.push(`tutorSettings.roleIds → <@&${opts.tutorRole.id}>`);
+  } else {
+    const r = findRoleContains('tutor');
+    if (r) { cfg.tutorSettings.roleIds = [r.id]; report.auto.push(`tutorSettings.roleIds → <@&${r.id}> (matched "${r.name}")`); }
+  }
+
+  // tutorSettings.logChannelId
+  if (opts.tutorLog) {
+    cfg.tutorSettings.logChannelId = opts.tutorLog.id;
+    report.set.push(`tutorSettings.logChannelId → <#${opts.tutorLog.id}>`);
+  } else {
+    const ch = findChannel(ChannelType.GuildText, 'bot-logs', 'tutor-log', 'tutor-logs', 'logs');
+    if (ch) { cfg.tutorSettings.logChannelId = ch.id; report.auto.push(`tutorSettings.logChannelId → <#${ch.id}> (matched "#${ch.name}")`); }
   }
 
   // Write back to disk
@@ -213,20 +256,22 @@ module.exports = {
           .setTimestamp();
 
         if (report.matched.length) {
-          embed.addFields({ name: `✅ Roles matched (${report.matched.length})`, value: report.matched.join('\n').slice(0, 1024) });
+          embed.addFields({ name: `✅ Roles matched by name (${report.matched.length})`, value: report.matched.join('\n').slice(0, 1024) });
+        }
+        if (report.auto.length) {
+          embed.addFields({ name: '✅ Auto-detected from server', value: report.auto.join('\n').slice(0, 1024) });
         }
         if (report.set.length) {
-          embed.addFields({ name: '✅ IDs set from options', value: report.set.join('\n').slice(0, 1024) });
+          embed.addFields({ name: '✅ Set from command options', value: report.set.join('\n').slice(0, 1024) });
         }
         if (report.missing.length) {
           embed.addFields({
-            name: '⚠️ Not found in this server',
-            value: report.missing.join('\n').slice(0, 1024) +
-              '\n\nRename the Discord role to match the label in config.json, or edit config.json manually.'
+            name: '⚠️ Could not auto-detect',
+            value: report.missing.join('\n').slice(0, 1024)
           });
         }
-        if (!report.matched.length && !report.set.length) {
-          embed.setDescription('Nothing was updated. Pass channel/role options to set singleton IDs, and ensure role names match config.json labels.');
+        if (!report.matched.length && !report.auto.length && !report.set.length) {
+          embed.setDescription('Nothing was updated. Ensure role names in Discord match the labels in config.json, or pass the options manually.');
         }
 
         await interaction.editReply({ embeds: [embed] });
