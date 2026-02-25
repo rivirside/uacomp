@@ -103,6 +103,13 @@ Key files: `commands/announce.js`, `commands/quiz.js`, `index.js`, `docs/COMMAND
 
 ---
 
+| `@mention` chatbot — RAG chunks + channel history injected into single Ollama call | done |
+| `/people` CRM — student/faculty directory with groups, cohort, contact info | done |
+
+Key files: `commands/people.js`, `index.js`, `rag/query.js`, `db/schema.sql`
+
+---
+
 ## Phase 5 — Planned
 `STATUS:Phase5`
 

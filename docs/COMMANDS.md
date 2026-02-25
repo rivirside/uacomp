@@ -26,6 +26,60 @@ University/cohort posts to the specified channel. Group scope DMs every member o
 
 ---
 
+## /people
+`CMD:people`
+
+### /people add `[admin]`
+Add a student or faculty member to the directory.
+
+| Option | Type | Required | Notes |
+|---|---|---|---|
+| `type` | choice | yes | `student` \| `faculty` |
+| `name` | string | yes | Full name |
+| `email` | string | no | |
+| `discord` | user | no | Link Discord account (students) |
+| `title` | string | no | e.g. `Associate Professor of Anatomy` |
+| `department` | string | no | |
+| `specialty` | string | no | Specialty or interest area |
+| `phone` | string | no | |
+| `year` | string | no | Class year e.g. `CO 2027` |
+| `cohort` | string | no | Autocomplete |
+| `notes` | string | no | Internal notes |
+
+### /people search
+Search the directory by name, email, department, specialty, or title.
+
+| Option | Type | Required | Notes |
+|---|---|---|---|
+| `query` | string | yes | Search term |
+| `type` | choice | no | Filter to `student` or `faculty` |
+
+Returns up to 10 results with Discord mention (if linked) and email.
+
+### /people info
+Show full profile for one person including groups they belong to.
+
+| Option | Type | Required | Notes |
+|---|---|---|---|
+| `person` | string | yes | Autocomplete by name |
+
+### /people edit `[admin]`
+Edit any field on an existing record.
+
+| Option | Type | Required | Notes |
+|---|---|---|---|
+| `person` | string | yes | Autocomplete by name |
+| *(any field from add)* | — | no | Only provided fields are updated |
+
+### /people remove `[admin]`
+Soft-delete a person from the directory (sets `active = 0`).
+
+| Option | Type | Required | Notes |
+|---|---|---|---|
+| `person` | string | yes | Autocomplete by name |
+
+---
+
 ## /ask
 `CMD:ask`
 

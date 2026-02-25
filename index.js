@@ -10,6 +10,7 @@ const {
 
 const { getDb }                = require('./db');
 const { indexGuildResources, indexGuildLinks } = require('./rag/indexer');
+const { retrieveChunks }       = require('./rag/query');
 const { startScheduler }       = require('./scheduler');
 const config             = require('./config.json');
 
@@ -122,29 +123,46 @@ const OLLAMA_URL  = process.env.OLLAMA_URL  || 'http://localhost:11434';
 const CHAT_MODEL  = process.env.OLLAMA_MODEL || 'llama3.2:3b';
 const CHAT_HISTORY_LIMIT = 20;
 
-const SYSTEM_PROMPT =
-  'You are a helpful AI assistant for medical students at the University of ' +
-  'Arizona College of Medicine – Phoenix. You have context from the recent ' +
-  'Discord channel conversation shown below. Answer questions concisely and ' +
-  'helpfully. If you are unsure about something school-specific, say so clearly.';
-
 client.on('messageCreate', async (message) => {
   if (message.author.bot) return;
   if (!message.mentions.has(client.user)) return;
 
   await message.channel.sendTyping();
 
-  try {
-    // Fetch recent channel history for context (before this message)
-    const fetched  = await message.channel.messages.fetch({ limit: CHAT_HISTORY_LIMIT, before: message.id });
-    const history  = [...fetched.values()].reverse(); // oldest → newest
+  // Strip @mention tokens to get the plain question
+  const userText = message.content.replace(/<@!?\d+>/g, '').trim();
+  const userName = message.member?.displayName || message.author.username;
+  const guildId  = message.guildId;
 
-    // Build Ollama message array
-    const ollamaMessages = [{ role: 'system', content: SYSTEM_PROMPT }];
+  try {
+    // Fetch channel history and RAG chunks in parallel
+    const [fetched, ragChunks] = await Promise.all([
+      message.channel.messages.fetch({ limit: CHAT_HISTORY_LIMIT, before: message.id }),
+      userText ? retrieveChunks(userText, guildId, { topK: 3 }) : Promise.resolve([])
+    ]);
+
+    const history = [...fetched.values()].reverse(); // oldest → newest
+
+    // Build system prompt — inject RAG chunks if found
+    let systemContent =
+      'You are a helpful AI assistant for medical students at the University of ' +
+      'Arizona College of Medicine – Phoenix. Answer questions concisely and helpfully. ' +
+      'If you are unsure about something school-specific, say so clearly.';
+
+    if (ragChunks.length) {
+      const knowledgeBlock = ragChunks
+        .map((c) => `[${c.filename}]\n${c.text}`)
+        .join('\n\n---\n\n');
+      systemContent +=
+        '\n\nYou also have access to the following relevant knowledge base excerpts — ' +
+        'use them to answer school-specific questions:\n\n' + knowledgeBlock;
+    }
+
+    // Build Ollama message array: system + channel history + current message
+    const ollamaMessages = [{ role: 'system', content: systemContent }];
 
     for (const msg of history) {
       if (msg.author.bot && msg.author.id === client.user.id) {
-        // Previous bot reply
         ollamaMessages.push({ role: 'assistant', content: msg.content });
       } else if (!msg.author.bot) {
         const name = msg.member?.displayName || msg.author.username;
@@ -152,9 +170,6 @@ client.on('messageCreate', async (message) => {
       }
     }
 
-    // Add the triggering message (strip @mention tokens)
-    const userText = message.content.replace(/<@!?\d+>/g, '').trim();
-    const userName = message.member?.displayName || message.author.username;
     ollamaMessages.push({ role: 'user', content: `${userName}: ${userText}` });
 
     const resp = await fetch(`${OLLAMA_URL}/api/chat`, {
@@ -165,10 +180,9 @@ client.on('messageCreate', async (message) => {
     });
 
     if (!resp.ok) throw new Error(`Ollama responded with ${resp.status}`);
-    const data    = await resp.json();
-    const reply   = data.message?.content?.trim() || "I couldn't generate a response.";
+    const data  = await resp.json();
+    const reply = data.message?.content?.trim() || "I couldn't generate a response.";
 
-    // Discord message limit is 2000 chars
     await message.reply(reply.slice(0, 2000));
   } catch (err) {
     console.error('[Chat]', err.message);

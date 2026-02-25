@@ -130,4 +130,33 @@ Question: ${question}`;
   return { answer, sources };
 }
 
-module.exports = { queryRAG };
+/**
+ * Retrieve relevant chunks from ChromaDB without calling the LLM.
+ * Used by the chatbot to inject knowledge-base context alongside
+ * conversation history in a single Ollama call.
+ *
+ * @param {string} question
+ * @param {string} guildId
+ * @param {{ topK?: number }} [opts]
+ * @returns {Promise<Array<{ text: string, filename: string }>>}
+ */
+async function retrieveChunks(question, guildId, opts = {}) {
+  const { topK = 3 } = opts;
+  try {
+    const queryEmbedding = await embedText(question);
+    const collection     = await getCollection();
+    const results        = await collection.query({
+      queryEmbeddings: [queryEmbedding],
+      nResults:        topK,
+      where:           { guild_id: { $eq: guildId } },
+      include:         ['documents', 'metadatas']
+    });
+    const chunks = results.documents[0] || [];
+    const metas  = results.metadatas[0]  || [];
+    return chunks.map((text, i) => ({ text, filename: metas[i]?.filename || 'unknown' }));
+  } catch {
+    return [];
+  }
+}
+
+module.exports = { queryRAG, retrieveChunks };

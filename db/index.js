@@ -24,6 +24,7 @@ function getDb() {
   migrateQuizScores(_db);
   migrateCalendars(_db);
   migrateCalendarScope(_db);
+  migratePeople(_db);
 
   return _db;
 }
@@ -135,6 +136,16 @@ function migrateCalendarScope(db) {
   db.exec(`CREATE UNIQUE INDEX IF NOT EXISTS idx_calendar_uid
     ON calendar_events(guild_id, external_uid) WHERE external_uid IS NOT NULL`);
   console.log('[DB] Calendar scope migration done.');
+}
+
+function migratePeople(db) {
+  // people table is created by schema.sql; this migration adds the links table
+  // active column if an old version of links exists without it.
+  const linkCols = db.prepare('PRAGMA table_info(links)').all().map((c) => c.name);
+  if (!linkCols.includes('active')) {
+    db.exec('ALTER TABLE links ADD COLUMN active INTEGER NOT NULL DEFAULT 1');
+    console.log('[DB] Added active column to links table.');
+  }
 }
 
 module.exports = { getDb };

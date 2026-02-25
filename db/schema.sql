@@ -161,3 +161,28 @@ CREATE TABLE IF NOT EXISTS notification_channels (
   type       TEXT NOT NULL DEFAULT 'digest',
   UNIQUE(guild_id, scope, group_id, type)
 );
+
+-- People CRM: students (linked to Discord) and faculty (contact-only)
+CREATE TABLE IF NOT EXISTS people (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  guild_id    TEXT NOT NULL,
+  type        TEXT NOT NULL DEFAULT 'student',  -- student | faculty
+  name        TEXT NOT NULL,
+  discord_id  TEXT,           -- student Discord user ID (NULL for faculty)
+  email       TEXT,
+  phone       TEXT,
+  title       TEXT,           -- faculty: "Associate Professor of Anatomy"
+  department  TEXT,           -- faculty: "Basic Sciences"
+  specialty   TEXT,           -- faculty specialty or student interest
+  cohort_id   INTEGER REFERENCES cohorts(id) ON DELETE SET NULL,
+  year        TEXT,           -- e.g. "CO 2027"
+  notes       TEXT,
+  active      INTEGER NOT NULL DEFAULT 1,
+  created_at  INTEGER DEFAULT (unixepoch()),
+  updated_at  INTEGER DEFAULT (unixepoch())
+);
+
+CREATE INDEX IF NOT EXISTS idx_people_guild_type
+  ON people(guild_id, type, active);
+CREATE INDEX IF NOT EXISTS idx_people_discord
+  ON people(discord_id) WHERE discord_id IS NOT NULL;
