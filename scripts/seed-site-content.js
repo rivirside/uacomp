@@ -84,6 +84,12 @@ const FILES = [
     description: 'Quick-reference contact list: MSG executive board, event planning contacts, sim center, Student Affairs, and who to contact for funding, rooms, calendar, CHIP, tutoring, and more.',
     type:        'guide',
   },
+  {
+    filename:    'command-workflows.md',
+    title:       'Bot Command Workflows',
+    description: 'Step-by-step guides for common tasks: uploading resources, reserving rooms, requesting event funding, adding calendar events, planning sim events, sending announcements, and more.',
+    type:        'guide',
+  },
 ];
 
 let seeded = 0;
