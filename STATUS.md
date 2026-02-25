@@ -69,6 +69,23 @@ Key files: `commands/group.js`, `commands/calendar.js`, `utils/subscriptionPolle
 
 ---
 
+## Phase 3 Addendum — Calendar Quick Wins & Knowledge Base ✅ COMPLETE
+`STATUS:Phase3b`
+
+| Item | Status |
+|---|---|
+| `/calendar delete` — autocomplete by title, shows date+scope, hard-deletes | done |
+| `/calendar add scope/group` — scoped single-event creation | done |
+| `data/student-orgs.md` — 79 UAComp student interest groups with descriptions | done |
+| `scripts/seed-orgs.js` — seeds orgs into `links` table for RAG indexing | done |
+| `data/knowledge/` — 5 curated markdown files (funding, resources, MSG, CHIP, learning) | done |
+| `scripts/seed-site-content.js` — seeds knowledge files as resources | done |
+| `indexGuildLinks()` — startup indexer for seed-script links (fixes orgs not being searchable) | done |
+
+Key files: `commands/calendar.js`, `data/knowledge/`, `scripts/`, `rag/indexer.js`
+
+---
+
 ## Phase 4 — Planned
 `STATUS:Phase4`
 

@@ -17,6 +17,8 @@ For searchable references, use the files listed under **Grep-able references** b
 | A command's full options | `docs/COMMANDS.md` | `### /command subcommand` |
 | A table's columns | `docs/SCHEMA.md` | `### <table_name>` |
 | Phase completion status | `STATUS.md` | `STATUS:Phase<N>` |
+| Knowledge base files | `data/knowledge/` | any `.md` filename |
+| Seed script for a data set | `scripts/` | `seed-*.js` |
 
 ---
 
@@ -41,7 +43,7 @@ index.js          ← Client, REST, auto-loads commands/*.js, routes interaction
       │
       ├── rag/
       │     ├── parsers.js   parseFile() → raw text (PDF/DOCX/TXT/MD/CSV/ICS/JSON)
-      │     ├── indexer.js   indexGuildResources(), indexSingleResource()
+      │     ├── indexer.js   indexGuildResources(), indexGuildLinks(), indexSingleResource()
       │     └── query.js     queryRAG(question, guildId, opts)
       │
       ├── utils/
@@ -54,6 +56,16 @@ index.js          ← Client, REST, auto-loads commands/*.js, routes interaction
             └── index.js    node-cron jobs: reminders, digest, day-before, sub poll
 ```
 
+**Data directories** (not committed to git, created at runtime or by seed scripts):
+```
+resources/guilds/<guildId>/  ← uploaded files (resources table)
+data/knowledge/              ← curated markdown knowledge base (committed)
+data/student-orgs.md         ← 79 UAComp student org descriptions (committed)
+scripts/seed-orgs.js         ← seeds orgs into links table
+scripts/seed-site-content.js ← copies data/knowledge/ files into resources table
+chroma_data/                 ← ChromaDB volume (gitignored)
+```
+
 **External services** (must be running before `npm start`):
 - ChromaDB — `docker compose up -d` → port 8001
 - Ollama — `ollama serve` → port 11434
@@ -62,6 +74,25 @@ index.js          ← Client, REST, auto-loads commands/*.js, routes interaction
 ---
 
 ## Data flow
+
+### Startup RAG indexing
+```
+client.once('clientReady') → for each guild:
+  indexGuildResources(guildId, db)
+    → resources table WHERE status='active'
+    → skip if MD5 unchanged
+    → parseFile(filepath) → chunkText → embedText → ChromaDB upsert
+  indexGuildLinks(guildId, db)
+    → links table WHERE active=1
+    → skip if ChromaDB already has chunks for link_id
+    → fetch(url) → strip HTML, fall back to title+description
+    → chunkText → embedText → ChromaDB upsert
+```
+`indexGuildLinks` exists because seed scripts (`seed-orgs.js`, `seed-site-content.js`)
+insert rows directly into the DB, bypassing the `/link add` flow that would normally
+trigger indexing.
+
+---
 
 ### Document Q&A (`/ask`)
 ```
