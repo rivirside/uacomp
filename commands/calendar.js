@@ -197,11 +197,22 @@ module.exports = {
     // ── add ─────────────────────────────────────────────────────────────────
     .addSubcommand((sub) =>
       sub.setName('add').setDescription('Add a single event')
-        .addStringOption((opt) => opt.setName('year').setDescription('Calendar label to modify').setRequired(true))
         .addStringOption((opt) => opt.setName('title').setDescription('Event title').setRequired(true))
         .addStringOption((opt) =>
           opt.setName('start').setDescription('Start date/time (YYYY-MM-DD or YYYY-MM-DDTHH:MM)').setRequired(true)
         )
+        .addStringOption((opt) =>
+          opt.setName('scope').setDescription('Audience scope (default: university)').setRequired(false)
+            .addChoices(
+              { name: 'University (everyone)',  value: 'university' },
+              { name: 'Cohort (active cohort)', value: 'cohort' },
+              { name: 'Group (specific group)', value: 'group' }
+            )
+        )
+        .addStringOption((opt) =>
+          opt.setName('group').setDescription('Group slug (required when scope=group)').setRequired(false).setAutocomplete(true)
+        )
+        .addStringOption((opt) => opt.setName('year').setDescription('Calendar label (default: default)').setRequired(false))
         .addStringOption((opt) => opt.setName('end').setDescription('End date/time (optional)').setRequired(false))
         .addStringOption((opt) => opt.setName('location').setDescription('Location (optional)').setRequired(false))
         .addStringOption((opt) => opt.setName('description').setDescription('Notes (optional)').setRequired(false))
@@ -209,6 +220,14 @@ module.exports = {
           opt.setName('categories').setDescription('Comma-separated tags (optional)').setRequired(false)
         )
         .addBooleanOption((opt) => opt.setName('allday').setDescription('All-day event?').setRequired(false))
+    )
+
+    // ── delete ───────────────────────────────────────────────────────────────
+    .addSubcommand((sub) =>
+      sub.setName('delete').setDescription('Delete an event (admin)')
+        .addStringOption((opt) =>
+          opt.setName('event').setDescription('Event to delete').setRequired(true).setAutocomplete(true)
+        )
     )
 
     // ── today ───────────────────────────────────────────────────────────────
@@ -385,14 +404,28 @@ module.exports = {
         return interaction.reply({ content: 'You need Manage Server permissions to add events.', ephemeral: true });
       }
 
-      const yearInput   = interaction.options.getString('year', true);
       const title       = interaction.options.getString('title', true).trim();
       const startInput  = interaction.options.getString('start', true);
+      const scope       = interaction.options.getString('scope') || 'university';
+      const groupSlug   = interaction.options.getString('group');
+      const yearInput   = interaction.options.getString('year') || 'default';
       const endInput    = interaction.options.getString('end');
       const location    = interaction.options.getString('location');
       const description = interaction.options.getString('description');
       const categories  = parseCategoriesInput(interaction.options.getString('categories'));
       const allDay      = interaction.options.getBoolean('allday') || false;
+
+      let groupId = null;
+      if (scope === 'group') {
+        if (!groupSlug) {
+          return interaction.reply({ content: 'You must specify a group when scope=group.', ephemeral: true });
+        }
+        const group = db.prepare('SELECT id FROM groups WHERE guild_id = ? AND name = ?').get(guildId, groupSlug);
+        if (!group) {
+          return interaction.reply({ content: `Group \`${groupSlug}\` not found.`, ephemeral: true });
+        }
+        groupId = group.id;
+      }
 
       await interaction.deferReply({ ephemeral: true });
       try {
@@ -409,14 +442,40 @@ module.exports = {
         insertEvent(db, guildId, yearKey, yearLabel, {
           title, start: startDate.toISOString(), end: endDate.toISOString(),
           allDay, location, description, categories
-        });
+        }, scope, groupId);
 
-        await interaction.editReply({ content: `Added **${title}** on ${startDate.toLocaleString()} to **${yearLabel}**.` });
+        const scopeTag = scope === 'group' ? ` → **${groupSlug}**` : ` → ${scope}`;
+        await interaction.editReply({ content: `Added **${title}** on ${startDate.toLocaleString()}${scopeTag}.` });
       } catch (err) {
         console.error('Calendar add error', err);
         await interaction.editReply({ content: `Unable to add event: ${err.message}` });
       }
       return;
+    }
+
+    // ── delete ────────────────────────────────────────────────────────────────
+    if (sub === 'delete') {
+      if (!interaction.memberPermissions?.has(PermissionFlagsBits.ManageGuild)) {
+        return interaction.reply({ content: 'You need Manage Server permissions to delete events.', ephemeral: true });
+      }
+
+      const eventId = parseInt(interaction.options.getString('event', true), 10);
+      if (Number.isNaN(eventId)) {
+        return interaction.reply({ content: 'Invalid event selection.', ephemeral: true });
+      }
+
+      const row = db.prepare('SELECT * FROM calendar_events WHERE id = ? AND guild_id = ?').get(eventId, guildId);
+      if (!row) {
+        return interaction.reply({ content: 'Event not found.', ephemeral: true });
+      }
+
+      db.prepare('DELETE FROM calendar_events WHERE id = ?').run(eventId);
+
+      const startDate = new Date(row.start_at * 1000).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+      return interaction.reply({
+        content: `Deleted **${row.title}** (${startDate}).`,
+        ephemeral: true
+      });
     }
 
     // ── today ─────────────────────────────────────────────────────────────────
@@ -608,14 +667,30 @@ module.exports = {
 
   async autocomplete(interaction, db) {
     const focused  = interaction.options.getFocused(true);
-    if (focused.name !== 'group') return;
+    const guildId  = interaction.guildId;
 
-    const guildId = interaction.guildId;
-    const rows = db.prepare(
-      `SELECT name, label FROM groups WHERE guild_id = ? AND active = 1
-       AND (name LIKE ? OR label LIKE ?) ORDER BY name LIMIT 25`
-    ).all(guildId, `%${focused.value}%`, `%${focused.value}%`);
+    if (focused.name === 'group') {
+      const rows = db.prepare(
+        `SELECT name, label FROM groups WHERE guild_id = ? AND active = 1
+         AND (name LIKE ? OR label LIKE ?) ORDER BY name LIMIT 25`
+      ).all(guildId, `%${focused.value}%`, `%${focused.value}%`);
+      return interaction.respond(rows.map((r) => ({ name: `${r.label} (${r.name})`, value: r.name })));
+    }
 
-    await interaction.respond(rows.map((r) => ({ name: `${r.label} (${r.name})`, value: r.name })));
+    if (focused.name === 'event') {
+      const term = focused.value.trim();
+      // Search events in this guild — upcoming first, then recent past
+      const rows = db.prepare(
+        `SELECT id, title, start_at, scope FROM calendar_events
+         WHERE guild_id = ? AND title LIKE ?
+         ORDER BY ABS(start_at - ?) ASC LIMIT 25`
+      ).all(guildId, `%${term}%`, Math.floor(Date.now() / 1000));
+
+      const fmt = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' });
+      return interaction.respond(rows.map((r) => ({
+        name: `${r.title} — ${fmt.format(new Date(r.start_at * 1000))} [${r.scope}]`.slice(0, 100),
+        value: String(r.id)
+      })));
+    }
   }
 };

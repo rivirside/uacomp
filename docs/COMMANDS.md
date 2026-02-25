@@ -52,14 +52,23 @@ Add a single event manually.
 
 | Option | Type | Required | Notes |
 |---|---|---|---|
-| `year` | string | yes | Calendar label |
 | `title` | string | yes | Event title |
 | `start` | string | yes | `YYYY-MM-DD` or `YYYY-MM-DDTHH:MM` |
+| `scope` | choice | no | `university` (default) \| `cohort` \| `group` |
+| `group` | string | no | Group slug (autocomplete). Required when `scope=group` |
+| `year` | string | no | Calendar label (default: `default`) |
 | `end` | string | no | Same format as start |
 | `location` | string | no | |
 | `description` | string | no | |
 | `categories` | string | no | Comma-separated tags |
 | `allday` | boolean | no | Default false |
+
+### /calendar delete `[admin]`
+Delete a single event. Autocomplete searches by title and shows date + scope to disambiguate.
+
+| Option | Type | Required | Notes |
+|---|---|---|---|
+| `event` | string | yes | Autocomplete — type title to search, shows date and scope |
 
 ### /calendar today
 Your personal events for today UTC. Scope-filtered (university + cohort + your groups).
