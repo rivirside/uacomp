@@ -294,6 +294,23 @@ Delete a group and cascade-delete its members and notification entries.
 
 ---
 
+## /help
+`CMD:help`
+
+### /help
+Show all commands in a single overview embed — one field per command, listing subcommands and admin requirements.
+
+### /help command
+Show detailed options for one specific command.
+
+| Option | Type | Required | Notes |
+|---|---|---|---|
+| `command` | string | no | Autocomplete — any loaded command name |
+
+Both views are ephemeral (only visible to the user who ran it).
+
+---
+
 ## /link
 `CMD:link`
 
