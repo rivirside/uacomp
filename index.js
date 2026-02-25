@@ -13,6 +13,7 @@ const { indexGuildResources, indexGuildLinks } = require('./rag/indexer');
 const { retrieveChunks }       = require('./rag/query');
 const { startScheduler }       = require('./scheduler');
 const { handleUploadMessage }  = require('./utils/uploadWizard');
+const { seedGuildKnowledge }   = require('./utils/seedKnowledge');
 const config             = require('./config.json');
 
 const {
@@ -75,6 +76,11 @@ client.once('clientReady', async () => {
   }
 
   for (const [gid] of client.guilds.cache) {
+    try {
+      seedGuildKnowledge(gid, db);
+    } catch (err) {
+      console.error(`[KnowledgeSeed] Failed for guild ${gid}:`, err.message);
+    }
     try {
       await indexGuildResources(gid, db);
     } catch (err) {
