@@ -18,6 +18,7 @@ For searchable references, use the files listed under **Grep-able references** b
 | A table's columns | `docs/SCHEMA.md` | `### <table_name>` |
 | Phase completion status | `STATUS.md` | `STATUS:Phase<N>` |
 | Knowledge base files | `data/knowledge/` | any `.md` filename |
+| People / CRM table | `docs/SCHEMA.md` | `### people` |
 | Seed script for a data set | `scripts/` | `seed-*.js` |
 
 ---
@@ -44,7 +45,7 @@ index.js          ← Client, REST, auto-loads commands/*.js, routes interaction
       ├── rag/
       │     ├── parsers.js   parseFile() → raw text (PDF/DOCX/TXT/MD/CSV/ICS/JSON)
       │     ├── indexer.js   indexGuildResources(), indexGuildLinks(), indexSingleResource()
-      │     └── query.js     queryRAG(question, guildId, opts)
+      │     └── query.js     queryRAG(question, guildId, opts), retrieveChunks(question, guildId, opts)
       │
       ├── utils/
       │     ├── constants.js single source of truth for magic values
@@ -91,6 +92,23 @@ client.once('clientReady') → for each guild:
 `indexGuildLinks` exists because seed scripts (`seed-orgs.js`, `seed-site-content.js`)
 insert rows directly into the DB, bypassing the `/link add` flow that would normally
 trigger indexing.
+
+---
+
+### @mention chatbot
+```
+messageCreate → bot @mentioned?
+  → Promise.all([
+      channel.messages.fetch(last 20),         ← conversation context
+      retrieveChunks(userText, guildId, {topK:3}) ← RAG lookup (no LLM call)
+    ])
+  → build system prompt: school context + RAG excerpts (if any)
+  → build message array: system + history (user/assistant roles) + current msg
+  → Ollama /api/chat (single call, non-streaming)
+  → message.reply (truncated to 2000 chars)
+```
+`retrieveChunks` is a thin wrapper around ChromaDB query that returns raw text
+chunks without calling the LLM — avoids a double Ollama call vs. using `queryRAG`.
 
 ---
 

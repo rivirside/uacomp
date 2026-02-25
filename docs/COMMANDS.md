@@ -8,6 +8,26 @@ Permission legend: `[admin]` = requires ManageGuild. No tag = anyone.
 
 ---
 
+## @mention — Conversational Chatbot
+
+Mention the bot anywhere it has read/write access:
+
+```
+@BotName <your message>
+```
+
+The bot:
+1. Fetches the last 20 messages from the channel as conversation context
+2. Runs a RAG search on your message — injects up to 3 relevant knowledge-base excerpts into the system prompt
+3. Makes a single call to Ollama (`llama3.2:3b`) with both the document context and the channel history
+4. Replies in-thread (Discord 2000-char limit applies)
+
+Previous bot replies in the history window are included as `role: assistant` so follow-up questions work naturally.
+
+**Requires:** Ollama running (`ollama serve`). ChromaDB optional — if unavailable, falls back to channel-history-only mode.
+
+---
+
 ## /announce
 `CMD:announce`
 

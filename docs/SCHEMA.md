@@ -242,3 +242,31 @@ Per-user SM-2 review state.
 | `reviews` | INTEGER | total review count |
 
 UNIQUE: `(flashcard_id, user_id)`
+
+---
+
+### people
+Student and faculty directory (CRM). Students are linked to their Discord account; faculty entries are contact-only.
+
+| Column | Type | Notes |
+|---|---|---|
+| `id` | INTEGER PK | |
+| `guild_id` | TEXT | |
+| `type` | TEXT | `student` \| `faculty` |
+| `name` | TEXT | Full name |
+| `discord_id` | TEXT | Discord user snowflake — NULL for faculty |
+| `email` | TEXT | |
+| `phone` | TEXT | |
+| `title` | TEXT | e.g. `Associate Professor of Anatomy` |
+| `department` | TEXT | Faculty department or division |
+| `specialty` | TEXT | Specialty or student interest area |
+| `cohort_id` | INTEGER | FK → cohorts, nullable |
+| `year` | TEXT | Class year e.g. `CO 2027` |
+| `notes` | TEXT | Internal admin notes |
+| `active` | INTEGER | 0/1 — soft-delete flag |
+| `created_at` | INTEGER | unixepoch |
+| `updated_at` | INTEGER | unixepoch |
+
+Indexes: `(guild_id, type, active)`, `(discord_id) WHERE discord_id IS NOT NULL`
+
+Student group memberships are not stored here — query `group_members JOIN groups` on `discord_id` at read time (see `/people info`).
