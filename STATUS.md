@@ -86,12 +86,27 @@ Key files: `commands/calendar.js`, `data/knowledge/`, `scripts/`, `rag/indexer.j
 
 ---
 
-## Phase 4 — Planned
+## Phase 4 — Announce & Quiz Bank ✅ COMPLETE
 `STATUS:Phase4`
 
-- Flashcard spaced-repetition UI (buttons, progress tracking)
-- `/ask` feedback loop (thumbs up/down → re-rank chunks)
-- Multi-guild admin dashboard (web)
+| Item | Status |
+|---|---|
+| `/announce send scope:university\|cohort channel:#ch message:text` — posts embed to channel | done |
+| `/announce send scope:group group:<slug> message:text` — DMs all group members | done |
+| `/quiz add` — admin adds question (correct + wrongs shuffled, optional topic/explanation) | done |
+| `/quiz list [topic]` — browse question bank, up to 25 shown | done |
+| `/quiz remove` — admin removes question via autocomplete | done |
+
+Key files: `commands/announce.js`, `commands/quiz.js`, `docs/COMMANDS.md`
+
+---
+
+## Phase 5 — Planned
+`STATUS:Phase5`
+
+- `/ask` feedback loop (thumbs up/down → log good/bad answers)
+- Onboarding flow (auto-role, welcome DM, cohort prompt on join)
+- Points/attendance system
 - Rate limiting / abuse prevention
 
 ---

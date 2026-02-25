@@ -1,6 +1,6 @@
 'use strict';
 
-const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionFlagsBits } = require('discord.js');
 const fs   = require('node:fs/promises');
 const path = require('node:path');
 const { QUIZ_ANSWER_PREFIX } = require('../utils/constants');
@@ -154,6 +154,26 @@ module.exports = {
     .addSubcommand((sub) =>
       sub.setName('leaderboard').setDescription('Show current weekly standings')
         .addUserOption((opt) => opt.setName('user').setDescription('User to highlight').setRequired(false))
+    )
+    .addSubcommand((sub) =>
+      sub.setName('add').setDescription('Add a question to the bank [admin]')
+        .addStringOption((opt) => opt.setName('question').setDescription('Question text').setRequired(true))
+        .addStringOption((opt) => opt.setName('correct').setDescription('Correct answer').setRequired(true))
+        .addStringOption((opt) => opt.setName('wrong1').setDescription('Wrong answer 1').setRequired(true))
+        .addStringOption((opt) => opt.setName('wrong2').setDescription('Wrong answer 2').setRequired(true))
+        .addStringOption((opt) => opt.setName('wrong3').setDescription('Wrong answer 3 (optional)').setRequired(false))
+        .addStringOption((opt) => opt.setName('topic').setDescription('Topic/tag (e.g. cardiology)').setRequired(false))
+        .addStringOption((opt) => opt.setName('explanation').setDescription('Explanation shown after answer').setRequired(false))
+    )
+    .addSubcommand((sub) =>
+      sub.setName('list').setDescription('List questions in the bank')
+        .addStringOption((opt) => opt.setName('topic').setDescription('Filter by topic').setRequired(false))
+    )
+    .addSubcommand((sub) =>
+      sub.setName('remove').setDescription('Remove a question from the bank [admin]')
+        .addStringOption((opt) =>
+          opt.setName('question').setDescription('Question to remove').setRequired(true).setAutocomplete(true)
+        )
     ),
 
   async execute(interaction, db) {
@@ -230,6 +250,106 @@ module.exports = {
         console.error('Leaderboard error', err);
         await interaction.editReply({ content: `Unable to load leaderboard: ${err.message}` });
       }
+      return;
+    }
+
+    if (sub === 'add') {
+      if (!interaction.memberPermissions?.has(PermissionFlagsBits.ManageGuild)) {
+        return interaction.reply({ content: 'You need **Manage Server** to add questions.', ephemeral: true });
+      }
+      await interaction.deferReply({ ephemeral: true });
+      try {
+        const questionText = interaction.options.getString('question');
+        const correct      = interaction.options.getString('correct');
+        const wrongs       = [
+          interaction.options.getString('wrong1'),
+          interaction.options.getString('wrong2'),
+          interaction.options.getString('wrong3')
+        ].filter(Boolean);
+        const topic       = interaction.options.getString('topic') || null;
+        const explanation = interaction.options.getString('explanation') || null;
+
+        // Shuffle correct answer into a random position
+        const choices = [...wrongs];
+        const insertAt = Math.floor(Math.random() * (choices.length + 1));
+        choices.splice(insertAt, 0, correct);
+
+        const newQuestion = {
+          question:    questionText,
+          choices,
+          answerIndex: insertAt,
+          ...(topic       && { topic }),
+          ...(explanation && { explanation })
+        };
+
+        const questions = await loadQuizQuestions();
+        questions.push(newQuestion);
+        await fs.writeFile(QUIZ_QUESTIONS_PATH, JSON.stringify(questions, null, 2), 'utf8');
+        questionCache = questions;
+
+        await interaction.editReply({
+          content: `Question added. Bank now has **${questions.length}** question(s).`
+        });
+      } catch (err) {
+        console.error('Quiz add error', err);
+        await interaction.editReply({ content: `Failed to add question: ${err.message}` });
+      }
+      return;
+    }
+
+    if (sub === 'list') {
+      await interaction.deferReply({ ephemeral: true });
+      try {
+        const topicFilter = interaction.options.getString('topic')?.toLowerCase();
+        let questions = await loadQuizQuestions();
+        if (topicFilter) {
+          questions = questions.filter((q) =>
+            collectTokens(q).some((t) => t.toLowerCase().includes(topicFilter))
+          );
+        }
+        if (!questions.length) {
+          return interaction.editReply({ content: topicFilter ? `No questions found for topic **${topicFilter}**.` : 'The question bank is empty.' });
+        }
+        const lines = questions.slice(0, 25).map((q, i) => {
+          const tags = collectTokens(q).join(', ') || 'no topic';
+          return `**${i + 1}.** ${q.question.slice(0, 80)}${q.question.length > 80 ? '…' : ''} *(${tags})*`;
+        });
+        const embed = new EmbedBuilder()
+          .setTitle(`Quiz Bank${topicFilter ? ` — ${topicFilter}` : ''} (${questions.length} question${questions.length === 1 ? '' : 's'})`)
+          .setDescription(lines.join('\n'))
+          .setColor(0x5865f2)
+          .setFooter({ text: questions.length > 25 ? 'Showing first 25 — use topic filter to narrow results' : '' });
+        await interaction.editReply({ embeds: [embed] });
+      } catch (err) {
+        console.error('Quiz list error', err);
+        await interaction.editReply({ content: `Failed to list questions: ${err.message}` });
+      }
+      return;
+    }
+
+    if (sub === 'remove') {
+      if (!interaction.memberPermissions?.has(PermissionFlagsBits.ManageGuild)) {
+        return interaction.reply({ content: 'You need **Manage Server** to remove questions.', ephemeral: true });
+      }
+      await interaction.deferReply({ ephemeral: true });
+      try {
+        const key       = interaction.options.getString('question');
+        const questions = await loadQuizQuestions();
+        const idx       = questions.findIndex((q) => q.question === key);
+        if (idx === -1) {
+          return interaction.editReply({ content: 'Question not found — it may have already been removed.' });
+        }
+        const [removed] = questions.splice(idx, 1);
+        await fs.writeFile(QUIZ_QUESTIONS_PATH, JSON.stringify(questions, null, 2), 'utf8');
+        questionCache = questions;
+        await interaction.editReply({
+          content: `Removed: *${removed.question.slice(0, 100)}*\nBank now has **${questions.length}** question(s).`
+        });
+      } catch (err) {
+        console.error('Quiz remove error', err);
+        await interaction.editReply({ content: `Failed to remove question: ${err.message}` });
+      }
+      return;
     }
   },
 
@@ -284,5 +404,22 @@ module.exports = {
     activeQuizzes.delete(messageId);
     await interaction.reply({ content: `Correct! You earned **${state.points}** point(s).`, ephemeral: true });
     return true;
+  },
+
+  async autocomplete(interaction) {
+    const focused = interaction.options.getFocused(true);
+    if (focused.name !== 'question') return interaction.respond([]);
+
+    const questions = await loadQuizQuestions().catch(() => []);
+    const term      = focused.value.toLowerCase();
+    const matches   = questions
+      .filter((q) => q.question.toLowerCase().includes(term))
+      .slice(0, 25)
+      .map((q) => ({
+        name:  q.question.slice(0, 100),
+        value: q.question  // used as lookup key in remove handler
+      }));
+
+    return interaction.respond(matches);
   }
 };

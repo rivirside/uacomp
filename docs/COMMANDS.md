@@ -8,6 +8,24 @@ Permission legend: `[admin]` = requires ManageGuild. No tag = anyone.
 
 ---
 
+## /announce
+`CMD:announce`
+
+### /announce send `[admin]`
+Broadcast a message to a scoped audience.
+
+| Option | Type | Required | Notes |
+|---|---|---|---|
+| `scope` | choice | yes | `university` (post to channel) \| `cohort` (post to channel) \| `group` (DM all members) |
+| `message` | string | yes | Markdown supported |
+| `channel` | channel | no | Required when scope is `university` or `cohort` |
+| `group` | string | no | Autocomplete. Required when scope is `group` |
+| `embed` | boolean | no | Post as embed? Default true |
+
+University/cohort posts to the specified channel. Group scope DMs every member of the group; reports how many were reached vs. failed (DMs disabled).
+
+---
+
 ## /ask
 `CMD:ask`
 
@@ -228,6 +246,37 @@ Show current week's standings.
 | Option | Type | Required | Notes |
 |---|---|---|---|
 | `user` | user | no | Highlight a specific user's rank |
+
+### /quiz add `[admin]`
+Add a question to the question bank.
+
+| Option | Type | Required | Notes |
+|---|---|---|---|
+| `question` | string | yes | Question text |
+| `correct` | string | yes | Correct answer |
+| `wrong1` | string | yes | Wrong answer |
+| `wrong2` | string | yes | Wrong answer |
+| `wrong3` | string | no | Optional 4th choice |
+| `topic` | string | no | Topic tag (e.g. `cardiology`) |
+| `explanation` | string | no | Shown to channel after answer |
+
+Correct answer is shuffled into a random position among the wrong answers. Writes to `data/quiz-questions.json`.
+
+### /quiz list
+List questions in the bank.
+
+| Option | Type | Required | Notes |
+|---|---|---|---|
+| `topic` | string | no | Filter by topic tag |
+
+Shows up to 25 questions (truncated). Use `topic` to narrow results.
+
+### /quiz remove `[admin]`
+Remove a question from the bank.
+
+| Option | Type | Required | Notes |
+|---|---|---|---|
+| `question` | string | yes | Autocomplete — search by question text |
 
 ---
 
