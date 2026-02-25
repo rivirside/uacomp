@@ -26,6 +26,27 @@ Previous bot replies in the history window are included as `role: assistant` so 
 
 **Requires:** Ollama running (`ollama serve`). ChromaDB optional — if unavailable, falls back to channel-history-only mode.
 
+### Upload Wizard
+
+Attach a file to any @mention message to start the conversational upload wizard:
+
+```
+@BotName [optional message]  ← with file attached
+```
+
+Fred will guide you through tagging the file step by step:
+
+1. **Type** — Is this an `official` school document (syllabus, handout, lecture notes) or a `student resource` (notes, study guide)?
+2. **Course** — Which course is this for? (shows available courses; reply `none` to skip)
+3. **Cohort** — Which class year? (shows available cohorts; reply `all` to skip)
+4. **Confirm** — Review summary, then reply `yes` to upload or `no` to cancel
+
+On confirmation Fred downloads the file, saves it to `resources/guilds/<guildId>/`, registers it in the database, and RAG-indexes it — so students can immediately search it with `/ask` or `@mention`.
+
+Type `cancel` at any step to abort without saving anything.
+
+**Supported file types:** `.txt .md .pdf .docx .csv .ics .json`
+
 ---
 
 ## /announce

@@ -12,6 +12,7 @@ const { getDb }                = require('./db');
 const { indexGuildResources, indexGuildLinks } = require('./rag/indexer');
 const { retrieveChunks }       = require('./rag/query');
 const { startScheduler }       = require('./scheduler');
+const { handleUploadMessage }  = require('./utils/uploadWizard');
 const config             = require('./config.json');
 
 const {
@@ -126,6 +127,12 @@ const CHAT_HISTORY_LIMIT = 20;
 client.on('messageCreate', async (message) => {
   if (message.author.bot) return;
   if (!message.mentions.has(client.user)) return;
+
+  const db = getDb();
+
+  // Upload wizard — handles file attachments and wizard follow-up replies
+  const wizardHandled = await handleUploadMessage(message, db);
+  if (wizardHandled) return;
 
   await message.channel.sendTyping();
 
