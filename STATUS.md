@@ -78,7 +78,7 @@ Key files: `commands/group.js`, `commands/calendar.js`, `utils/subscriptionPolle
 | `/calendar add scope/group` — scoped single-event creation | done |
 | `data/student-orgs.md` — 79 UAComp student interest groups with descriptions | done |
 | `scripts/seed-orgs.js` — seeds orgs into `links` table for RAG indexing | done |
-| `data/knowledge/` — 5 curated markdown files (funding, resources, MSG, CHIP, learning) | done |
+| `data/knowledge/` — 8 curated markdown files (funding, resources, MSG, CHIP, learning, org leader guide, wellness, contacts) | done |
 | `scripts/seed-site-content.js` — seeds knowledge files as resources | done |
 | `indexGuildLinks()` — startup indexer for seed-script links (fixes orgs not being searchable) | done |
 

@@ -66,6 +66,24 @@ const FILES = [
     description: 'Learning strategy consultations, STEP prep support, peer tutoring, wellness programming, and how to schedule appointments with learning specialists.',
     type:        'guide',
   },
+  {
+    filename:    'org-leader-resources.md',
+    title:       'Student Org Leader Resources',
+    description: 'How to reserve a room, submit events to the calendar, request food/supplies funding, plan a sim center event, complete the student event checklist, and register a club.',
+    type:        'guide',
+  },
+  {
+    filename:    'wellness.md',
+    title:       'Wellness Program',
+    description: 'Wellness program overview: four pillars, mentorship structure (physician, resident, peer mentors), program goals, and wellness resources.',
+    type:        'guide',
+  },
+  {
+    filename:    'contacts.md',
+    title:       'Key Contacts',
+    description: 'Quick-reference contact list: MSG executive board, event planning contacts, sim center, Student Affairs, and who to contact for funding, rooms, calendar, CHIP, tutoring, and more.',
+    type:        'guide',
+  },
 ];
 
 let seeded = 0;
